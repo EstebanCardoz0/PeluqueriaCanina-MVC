@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Crear Dueño</title>
+    </head>
+    <body>
+        <form style="max-width: 500pt;margin:  auto;margin-top: 2%;" class="formulario" action="/duenio/crear" method="POST">
+
+
+            <div class="form-group my-3">
+                <h3 class="card-title">Ingresá los datos del dueño</h3>
+            </div>
+
+            <div class="form-group my-3">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Juancito Yapú">
+            </div>
+            <div class="form-group my-3">
+                <label for="color">Celular</label>
+                <input id="color" type="text" class="form-control" name="celular" placeholder="3794-112233">
+            </div>
+            <div class="form-group my-3">
+                <label for="raza">dirección</label>
+                <input id="raza" type="text" class="form-control" name="direccion" placeholder="Juan M. de Rosas 5566">
+            </div>
+
+
+            <button style="color: black;background-color: orange;border-color: orange;" type="submit"
+                    class="btn btn-primary mt-3 botones"><strong>Ingresar</strong></button>
+
+            <div th:if="${exito != null}" class="Card text-white bg-success mb-3 mt-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card- be th o" th:text="${exito}"></p>
+                </div>
+            </div>
+        </form>
+        <p th:if="${exito}" th:text="${exito}" style="color: green;"></p>
+
+    </body>
+</html>

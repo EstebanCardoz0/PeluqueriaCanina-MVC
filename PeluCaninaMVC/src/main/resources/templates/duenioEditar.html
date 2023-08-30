@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dueño editar</title>
+
+</head>
+
+<body>
+<header class="p-3 text-bg-dark">
+    <div class="text-end">
+
+        <button type="button" class="btn btn-warning"><a href="/duenio/lista"
+                                                         style="text-decoration: none; color: inherit;">Volver a la
+            lista</a></button>
+    </div>
+</header>
+<form style="max-width: 500pt;margin:  auto;margin-top: 2%;" class="formulario"
+      th:action="@{/duenio/editar/__${duenio.id}__}" method="post">
+
+    <div class="form-group my-3">
+        <h3 class="card-title">Modificar dueño</h3>
+    </div>
+    <input hidden th:value="${id}" name="id" type="number">
+    <p hidden>ID: <span th:text="${duenio.id}"></span></p>
+
+    <div class="form-group my-3">
+        <h3 class="card-title">Ingresá los datos del dueño</h3>
+    </div>
+
+
+    <div class="form-group my-3">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" class="form-control" name="nombre" th:value="${duenio.nombre}">
+    </div>
+    <div class="form-group my-3">
+        <label for="color">Celular</label>
+        <input id="color" type="text" class="form-control" name="celular" th:value="${duenio.celular}">
+    </div>
+    <div class="form-group my-3">
+        <label for="raza">Dirección</label>
+        <input id="raza" type="text" class="form-control" name="direccion" th:value="${duenio.direccion}">
+    </div>
+    <div class="form-group my-3">
+        <label for="raza">ID Mascota</label>
+        <input id="raza" type="text" class="form-control" name="idMascota" th:value="${duenio.idMascota}">
+    </div>
+    <div class="form-group my-3">
+        <label for="raza">Mascota</label>
+        <input id="raza" type="text" class="form-control" name="nombreMascota" th:value="${duenio.nombreMascota}">
+    </div>
+
+    <div class="form-group my-3">
+
+
+        <button style="color: black;background-color: orange;border-color: orange;" type="submit"
+                class="btn btn-primary mt-3 botones"><strong>Actualizar</strong></button>
+
+
+        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+            <div class="card-body">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </div>
+
+
+        <div th:if="${exito != null}" class="Card text-white bg-success mb-3 mt-3 mensajeExito">
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card- be th o" th:text="${exito}"></p>
+            </div>
+        </div>
+
+</form>
+
+
+</body>
+
+</html>

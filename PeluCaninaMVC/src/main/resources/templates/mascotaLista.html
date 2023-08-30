@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mascota lista</title>
+    </head>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Raza</th>
+                    <th>Color</th>
+                    <th>Alergico</th>
+                    <th>Atención Especial</th>
+                    <th>Observaciones</th>
+                    <th>ID Dueño</th>
+                    <th>Dueño</th>
+                    <th colspan="2">Acciones</th>
+
+
+                </tr>
+            </thead>
+            <tbody th:each="masco:${mascotas}">
+                <tr>
+                    <th th:text="${masco.id}"></th>
+                    <td th:text="${masco.nombre}"></td>
+                    <td th:text="${masco.raza}"></td>
+                    <td th:text="${masco.color}"></td>
+                    <td th:text="${masco.alergico}"></td>
+                    <td th:text="${masco.atencionEspecial}"></td>
+                    <td th:text="${masco.observaciones}"></td>
+
+                    <td>
+
+                        <span th:if="${masco.duen != null}" th:text="${masco.duen.id}"></span>
+                        <span th:if="${masco.duen == null}">(No tiene)</span>
+
+                    </td>
+                    <td>
+
+                        <span th:if="${masco.duen != null}" th:text="${masco.duen.nombre}"></span>
+                        <span th:if="${masco.duen == null}">(No tiene)</span>
+
+                    </td>
+
+
+
+                    <td>
+                        <a th:href="@{/mascota/editar/__${masco.id}__}"><i></i>Modificar</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/mascota/borrar/__${masco.id}__}"><i></i>Borrar</a>
+                    </td>
+
+
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

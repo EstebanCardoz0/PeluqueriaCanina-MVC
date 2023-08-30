@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dueño lista</title>
+    </head>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Celular</th>
+                    <th>Direccion</th>
+                    <th>Mascotas</th>
+                    <th>ID Mascota</th>
+                    <th>Mascota</th>
+
+                    <th colspan="2">Acciones</th>
+
+
+                </tr>
+            </thead>
+            
+            <tbody th:each="dueni:${duenios}">
+                <tr>
+                    <th th:text="${dueni.id}"></th>
+                    <td th:text="${dueni.nombre}"></td>
+                    <td th:text="${dueni.celular}"></td>
+                    <td th:text="${dueni.direccion}"></td>
+                    <td th:text="${dueni.idMascota}"></td>
+                    <td th:text="${dueni.nombreMascota}"></td>
+
+
+                    <!--                    <td ><ul>
+                    
+                                                <li th:each="masco : ${dueni.mascotas}" th:text="${masco.nombre}"></li>
+                                            </ul>
+                    
+                    
+                                        </td>-->
+
+
+
+
+                    <td>
+                        <a th:href="@{/duenio/editar/__${dueni.id}__}"><i></i>Modificar</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/duenio/borrar/__${dueni.id}__}"><i></i>Borrar</a>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
