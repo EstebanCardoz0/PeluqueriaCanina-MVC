@@ -1,12 +1,10 @@
 package peluCanina.peluCanina.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import peluCanina.peluCanina.DTO.DTODuenio;
 import peluCanina.peluCanina.entity.Duenio;
-import peluCanina.peluCanina.entity.Mascota;
 import peluCanina.peluCanina.service.IDuenioService;
 
 @RestController

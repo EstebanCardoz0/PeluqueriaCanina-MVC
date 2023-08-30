@@ -58,11 +58,11 @@ public class MascotaController {
         return "mascotaLista.html";
     }
 
-    @DeleteMapping("/borrar/{id}")
-    public String borrarMascota(@PathVariable Long id) {
+    @GetMapping("/borrar/{id}")
+    public void borrarMascota(@PathVariable Long id) {
 
         mascoSer.borrarMascota(id);
-        return "Mascota borrada con éxito";
+//        return "Mascota borrada con éxito";
     }
 
     @PutMapping("/editar/{id}")
