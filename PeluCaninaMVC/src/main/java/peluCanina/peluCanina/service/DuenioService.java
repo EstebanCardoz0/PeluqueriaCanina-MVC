@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import peluCanina.peluCanina.DTO.DTODuenio;
 import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Duenio;
-import peluCanina.peluCanina.entity.Mascota;
 import peluCanina.peluCanina.repository.IDuenioRepository;
 
 @Service

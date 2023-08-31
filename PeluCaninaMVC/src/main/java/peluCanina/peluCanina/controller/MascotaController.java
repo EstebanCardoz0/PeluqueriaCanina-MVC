@@ -1,6 +1,8 @@
 package peluCanina.peluCanina.controller;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Duenio;
 import peluCanina.peluCanina.entity.Mascota;
+import peluCanina.peluCanina.exceptions.MiException;
 import peluCanina.peluCanina.service.IDuenioService;
 import peluCanina.peluCanina.service.IMascotaService;
 
@@ -31,10 +34,35 @@ public class MascotaController {
     }
 
     @PostMapping("/crear")
-    public String crearMascota(@RequestBody Mascota mas) {
+    public String crearMascota(@RequestParam String nombre, @RequestParam(required = false) String color, @RequestParam String raza,
+            @RequestParam String alergico, @RequestParam String atencionEspecial,
+            @RequestParam(required = false) String observaciones, @RequestParam Long duen,
+            ModelMap modelo) {
 
-        mascoSer.crearMascota(mas);
-        return "La mascota se creó correctamente";
+
+        try {
+            Mascota mas = new Mascota();
+            mas.setNombre(nombre);
+            mas.setColor(color);
+            mas.setRaza(raza);
+            mas.setAlergico(alergico);
+            mas.setAtencionEspecial(atencionEspecial);
+            mas.setObservaciones(observaciones);
+//            mas.setDuen(duen);
+
+            mascoSer.crearMascota(mas,duen);
+
+            modelo.put("exito", "mascota creada correctamente");
+
+        } catch (MiException ex) {
+            List<Duenio> duenios = duenSer.listarDuenios();
+            modelo.addAttribute("duenios", duenios);
+
+            modelo.put("error", ex.getMessage());
+
+        }
+
+        return "mascotaAlta.html";
     }
 
     @GetMapping("/traer/{id}")
@@ -68,7 +96,7 @@ public class MascotaController {
     @PutMapping("/editar/{id}")
     public DTOMascota editarMascota(@PathVariable Long id, @RequestParam String nombre,
             @RequestParam String color, @RequestParam String raza, @RequestParam String atencionEspecial, @RequestParam String alergico,
-            @RequestParam String observaciones, @RequestParam Long duen) {
+            @RequestParam String observaciones, @RequestParam Long duen) throws MiException {
 
         Duenio du = duenSer.traerDuenio(duen);
 

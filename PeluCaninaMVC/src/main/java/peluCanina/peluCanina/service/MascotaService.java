@@ -2,12 +2,11 @@ package peluCanina.peluCanina.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import static java.util.Optional.empty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import peluCanina.peluCanina.DTO.DTODuenio;
 import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Mascota;
+import peluCanina.peluCanina.exceptions.MiException;
 import peluCanina.peluCanina.repository.IMascotaRepository;
 
 @Service
@@ -15,9 +14,18 @@ public class MascotaService implements IMascotaService {
 
     @Autowired
     IMascotaRepository mascoRepo;
+    
+    @Autowired
+    IDuenioService duenSer;
 
     @Override
-    public void crearMascota(Mascota mas) {
+    public void crearMascota(Mascota mas, Long duen) throws MiException {
+
+        validar(mas.getNombre(), mas.getColor(), mas.getRaza(), mas.getAlergico(),
+                mas.getAtencionEspecial(), duen);
+        
+        mas.setDuen(duenSer.traerDuenio(duen));
+
         mascoRepo.save(mas);
     }
 
@@ -94,7 +102,7 @@ public class MascotaService implements IMascotaService {
     }
 
     @Override
-    public void editarMascota(Mascota mas) {
+    public void editarMascota(Mascota mas) throws MiException {
 
         Mascota masco = this.traerMascota(mas.getId());
         masco.setNombre(mas.getNombre());
@@ -104,6 +112,31 @@ public class MascotaService implements IMascotaService {
         masco.setAtencionEspecial(mas.getAtencionEspecial());
         masco.setObservaciones(mas.getObservaciones());
         masco.setDuen(mas.getDuen());
-        this.crearMascota(masco);
+//        this.crearMascota(masco,);
+    }
+
+    @Override
+    public void validar(String nombre, String color, String raza, String alergico, String atencionEspecial,
+            Long duenio) throws MiException {
+
+        if (nombre.isEmpty() || nombre == null) {
+            throw new MiException("El nombre no puede ser nulo o estar vacío");
+        }
+        if (color.isEmpty() || color == null) {
+            throw new MiException("El color no puede ser nulo o estar vacío");
+        }
+        if (raza.isEmpty() || raza == null) {
+            throw new MiException("La raza no puede ser nula o estar vacía");
+        }
+        if (alergico.isEmpty() || alergico == null) {
+            throw new MiException("Se debe indicar si la mascota el alérgica o no");
+        }
+        if (atencionEspecial.isEmpty() || atencionEspecial == null) {
+            throw new MiException("Se debe indicar si la mascota requiere atención especial o no");
+        }
+        if (duenio == null) {
+            throw new MiException("Se debe indicar el dueño de la mascota");
+        }
+
     }
 }
