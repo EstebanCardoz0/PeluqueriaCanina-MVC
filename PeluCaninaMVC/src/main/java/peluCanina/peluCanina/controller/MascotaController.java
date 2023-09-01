@@ -34,11 +34,10 @@ public class MascotaController {
     }
 
     @PostMapping("/crear")
-    public String crearMascota(@RequestParam String nombre, @RequestParam(required = false) String color, @RequestParam String raza,
+    public String crearMascota(@RequestParam String nombre, @RequestParam String color, @RequestParam String raza,
             @RequestParam String alergico, @RequestParam String atencionEspecial,
-            @RequestParam(required = false) String observaciones, @RequestParam Long duen,
+            @RequestParam(required = false) String observaciones, @RequestParam(required=false) Duenio duen,
             ModelMap modelo) {
-
 
         try {
             Mascota mas = new Mascota();
@@ -48,9 +47,9 @@ public class MascotaController {
             mas.setAlergico(alergico);
             mas.setAtencionEspecial(atencionEspecial);
             mas.setObservaciones(observaciones);
-//            mas.setDuen(duen);
+            mas.setDuen(duen);
 
-            mascoSer.crearMascota(mas,duen);
+            mascoSer.crearMascota(mas);
 
             modelo.put("exito", "mascota creada correctamente");
 

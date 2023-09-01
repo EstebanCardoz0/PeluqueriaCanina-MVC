@@ -3,8 +3,10 @@ package peluCanina.peluCanina.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import peluCanina.peluCanina.DTO.DTOMascota;
+import peluCanina.peluCanina.entity.Duenio;
 import peluCanina.peluCanina.entity.Mascota;
 import peluCanina.peluCanina.exceptions.MiException;
 import peluCanina.peluCanina.repository.IMascotaRepository;
@@ -14,17 +16,14 @@ public class MascotaService implements IMascotaService {
 
     @Autowired
     IMascotaRepository mascoRepo;
-    
-    @Autowired
-    IDuenioService duenSer;
 
+//    @Autowired @Lazy
+//    IDuenioService duenSer;
     @Override
-    public void crearMascota(Mascota mas, Long duen) throws MiException {
+    public void crearMascota(Mascota mas) throws MiException {
 
         validar(mas.getNombre(), mas.getColor(), mas.getRaza(), mas.getAlergico(),
-                mas.getAtencionEspecial(), duen);
-        
-        mas.setDuen(duenSer.traerDuenio(duen));
+                mas.getAtencionEspecial(), mas.getDuen());
 
         mascoRepo.save(mas);
     }
@@ -117,7 +116,7 @@ public class MascotaService implements IMascotaService {
 
     @Override
     public void validar(String nombre, String color, String raza, String alergico, String atencionEspecial,
-            Long duenio) throws MiException {
+            Duenio duenio) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("El nombre no puede ser nulo o estar vacío");
