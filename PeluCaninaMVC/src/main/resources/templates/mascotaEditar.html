@@ -1,130 +1,112 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mascota editar</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mascota editar</title>
 
-    </head>
+</head>
 
-    <body>
-        <header class="p-3 text-bg-dark">
-            <div class="text-end">
+<body>
+    <header class="p-3 text-bg-dark">
+        <div class="text-end">
 
-                <button type="button" class="btn btn-warning"><a href="/mascota/lista"
-                                                                 style="text-decoration: none; color: inherit;">Volver a la
-                        lista</a></button>
+            <button type="button" class="btn btn-warning"><a href="/mascotas/listar"
+                    style="text-decoration: none; color: inherit;">Volver a la
+                    lista</a></button>
+        </div>
+    </header>
+    <form style="max-width: 500pt;margin:  auto;margin-top: 2%;" class="formulario"
+        th:action="@{/mascotas/editar/__${mascota.id}__}" method="post">
+
+        <div class="form-group my-3">
+            <h3 class="card-title">Modificar mascota</h3>
+        </div>
+        <input hidden th:value="${id}" name="id" type="number">
+        <p hidden>ID: <span th:text="${mascota.id}"></span></p>
+
+        <div class="form-group my-3">
+            <h3 class="card-title">Ingresá los datos de la mascota</h3>
+        </div>
+
+
+        <div class="form-group my-3">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" class="form-control" name="nombre" th:value="${mascota.nombre}">
+        </div>
+        <div class="form-group my-3">
+            <label for="color">Color</label>
+            <input id="color" type="text" class="form-control" name="color" th:value="${mascota.color}">
+        </div>
+        <div class="form-group my-3">
+            <label for="raza">Raza</label>
+            <input id="raza" type="text" class="form-control" name="raza" th:value="${mascota.raza}">
+        </div>
+
+        <div class="form-group my-3">
+
+            <label>Alergico</label> <br>
+
+            <label for="alergico">SI</label>
+            <input id="alergico" type="radio" value="SI" th:checked="${mascota.alergico == 'SI'}" name="alergico">
+            <label for="alergic">NO</label>
+            <input id="alergic" type="radio" value="NO" th:checked="${mascota.alergico == 'NO'}" name="alergico">
+        </div>
+
+        <div class="form-group my-3">
+            <label>Atención especial</label> <br>
+            <label for="paten">SI</label>
+            <input id="paten" type="radio" value="SI" th:checked="${mascota.atencionEspecial == 'SI'}"
+                name="atencionEspecial">
+            <label for="pate">NO</label>
+            <input id="pate" type="radio" value="NO" th:checked="${mascota.atencionEspecial == 'NO'}"
+                name="atencionEspecial">
+        </div>
+
+        <div class="form-group my-3">
+            <label for="cantidadPuertas">Observaciones</label>
+            <input id="cantidadPuertas" type="text" size="50" width="56" class="form-control" name="observaciones"
+                th:value="${mascota.observaciones}">
+        </div>
+
+
+        <div>
+
+            <label for="duenios">Dueño</label>
+            <select id="duenios" name="duen">
+
+
+                <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${mascota.duen.nombre}"></option>
+            </select>
+        </div>
+
+
+
+        <button style="color: black;background-color: orange;border-color: orange;" type="submit"
+            class="btn btn-primary mt-3 botones"><strong>Actualizar</strong></button>
+
+
+        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+            <div class="card-body">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text" th:text="${error}"></p>
             </div>
-        </header>
-        <form style="max-width: 500pt;margin:  auto;margin-top: 2%;" class="formulario"
-              th:action="@{/mascota/editar/__${mascota.id}__}" method="post">
+        </div>
 
-            <div class="form-group my-3">
-                <h3 class="card-title">Modificar mascota</h3>
+
+        <div th:if="${exito != null}" class="Card text-white bg-success mb-3 mt-3 mensajeExito">
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card- be th o" th:text="${exito}"></p>
             </div>
-            <input hidden th:value="${id}" name="id" type="number">
-            <p hidden>ID: <span th:text="${mascota.id}"></span></p>
-
-            <div class="form-group my-3">
-                <h3 class="card-title">Ingresá los datos de la mascota</h3>
-            </div>
+        </div>
 
 
-            <div class="form-group my-3">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" class="form-control" name="nombre" th:value="${mascota.nombre}">
-            </div>
-            <div class="form-group my-3">
-                <label for="color">Color</label>
-                <input id="color" type="text" class="form-control" name="color" th:value="${mascota.color}">
-            </div>
-            <div class="form-group my-3">
-                <label for="raza">Raza</label>
-                <input id="raza" type="text" class="form-control" name="raza" th:value="${mascota.raza}">
-            </div>
-
-            <div class="form-group my-3">
-
-                <label>Alergico</label> <br>
-
-                <label for="alergico">SI</label>
-                <input id="alergico" type="radio" value="SI" th:checked="${mascota.alergico == 'SI'}" name="alergico">
-                <label for="alergic">NO</label>
-                <input id="alergic" type="radio" value="NO" th:checked="${mascota.alergico == 'NO'}" name="alergico">
-            </div>
-
-            <div class="form-group my-3">
-                <label>Atención especial</label> <br>
-                <label for="paten">SI</label>
-                <input id="paten" type="radio" value="SI" th:checked="${mascota.atencionEspecial == 'SI'}"
-                       name="atencionEspecial">
-                <label for="pate">NO</label>
-                <input id="pate" type="radio" value="NO" th:checked="${mascota.atencionEspecial == 'NO'}"
-                       name="atencionEspecial">
-            </div>
-
-            <div class="form-group my-3">
-                <label for="cantidadPuertas">Observaciones</label>
-                <input id="cantidadPuertas" type="text" size="50" width="56" class="form-control" name="observaciones"
-                       th:value="${mascota.observaciones}">
-            </div>
-
-            <!--            <div class="form-group my-3">
-                            <label for="idDuenio">Dueño</label>
-                            <input id="idDuenio" type="number" size="50" width="56" class="form-control" name="idDuenio"
-                                   >
-                        </div>-->
+    </form>
 
 
-            <div>
-
-                <label for="duenios">Dueño</label>
-                <select id="duenios" name="duenio">
-
-<<<<<<< HEAD
-<!--            <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"-->
-<!--                    th:selected="${duenio?.idDuenio == mascota?.idDuenio?}"></option> -->
-
-            <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"
-                    ></option>
-        </select>
-    </div>
-=======
-<!--                    <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"
-                            th:selected="${duenio.id == mascota.idDuenio}"></option>-->
-                    <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"
-                            ></option>
-                </select>
-            </div>
-            
->>>>>>> 550ac97d4228a4bb63b365d32af4d007bdf27069
-
-
-            <button style="color: black;background-color: orange;border-color: orange;" type="submit"
-                    class="btn btn-primary mt-3 botones"><strong>Actualizar</strong></button>
-
-
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error</h5>
-                    <p class="card-text" th:text="${error}"></p>
-                </div>
-            </div>
-
-
-            <div th:if="${exito != null}" class="Card text-white bg-success mb-3 mt-3 mensajeExito">
-                <div class="card-body">
-                    <h5 class="card-title">Exito!</h5>
-                    <p class="card- be th o" th:text="${exito}"></p>
-                </div>
-            </div>
-
-
-        </form>
-
-
-    </body>
+</body>
 
 </html>
