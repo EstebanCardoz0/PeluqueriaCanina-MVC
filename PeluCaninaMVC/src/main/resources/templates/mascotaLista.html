@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Mascota lista</title>
 </head>
+<<<<<<< HEAD
 
 <body>
     <table class="table">
@@ -21,8 +22,12 @@
                 <th>ID Dueño</th>
                 <th>Dueño</th>
                 <th colspan="2">Acciones</th>
+=======
+>>>>>>> 5bba98b6a2ecff790dcf6a4d5dfb98ee902e9fa0
 
+<body>
 
+<<<<<<< HEAD
             </tr>
         </thead>
         <tbody th:each="masco:${mascotas}">
@@ -62,6 +67,95 @@
             </tr>
         </tbody>
     </table>
+=======
+    <div>
+        <form action="/mascotas/traer" method="get">
+            <label for="id">Buscar por número ID</label>
+            <input id="id" name="id" type="text">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Color</th>
+                <th>Alergico</th>
+                <th>Atención Especial</th>
+                <th>Observaciones</th>
+                <th>ID Dueño</th>
+                <th>Dueño</th>
+                <th colspan="2">Acciones</th>
+
+
+            </tr>
+        </thead>
+        <tbody th:each="masco:${mascotas}">
+            <tr>
+                <th th:text="${masco.id}"></th>
+                <td th:text="${masco.nombre}"></td>
+                <td th:text="${masco.raza}"></td>
+                <td th:text="${masco.color}"></td>
+                <td th:text="${masco.alergico}"></td>
+                <td th:text="${masco.atencionEspecial}"></td>
+                <td th:text="${masco.observaciones}"> </td>
+
+
+
+                <td>
+
+                    <span th:if="${masco.duen != null}" th:text="${masco.duen.id}"></span>
+                    <span th:if="${masco.duen == null}">(No tiene)</span>
+
+                </td>
+                <td>
+
+                    <span th:if="${masco.duen != null}" th:text="${masco.duen.nombre}"></span>
+                    <span th:if="${masco.duen == null}">(No tiene)</span>
+
+                </td>
+
+
+
+                <td>
+                    <a th:href="@{/mascotas/editar/__${masco.id}__}"><i></i>Modificar</a>
+                </td>
+                <td>
+                    <a th:href="@{/mascotas/borrar/__${masco.id}__}"><i></i>Borrar</a>
+                </td>
+
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+        <div class="card-body">
+            <h5 class="card-title">Error</h5>
+            <p class="card-text" th:text="${error}"></p>
+        </div>
+    </div>
+
+
+    <div th:if="${exito != null}" class="Card text-white bg-success mb-3 mt-3 mensajeExito">
+        <div class="card-body">
+            <h5 class="card-title">Exito!</h5>
+            <p class="card- be th o" th:text="${exito}"></p>
+        </div>
+    </div>
+
+    <div>
+        <a th:href="@{/index}"><button>Volver a la home</button></a>
+
+    </div>
+>>>>>>> 5bba98b6a2ecff790dcf6a4d5dfb98ee902e9fa0
 </body>
 
 </html>

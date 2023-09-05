@@ -3,7 +3,6 @@ package peluCanina.peluCanina.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Duenio;
@@ -103,15 +102,11 @@ public class MascotaService implements IMascotaService {
     @Override
     public void editarMascota(Mascota mas) throws MiException {
 
-        Mascota masco = this.traerMascota(mas.getId());
-        masco.setNombre(mas.getNombre());
-        masco.setRaza(mas.getRaza());
-        masco.setColor(mas.getColor());
-        masco.setAlergico(mas.getAlergico());
-        masco.setAtencionEspecial(mas.getAtencionEspecial());
-        masco.setObservaciones(mas.getObservaciones());
-        masco.setDuen(mas.getDuen());
-//        this.crearMascota(masco,);
+        this.validar(mas.getNombre(), mas.getColor(), mas.getRaza(), mas.getAlergico(),
+                mas.getAtencionEspecial(), mas.getDuen());
+
+        mascoRepo.save(mas);
+
     }
 
     @Override

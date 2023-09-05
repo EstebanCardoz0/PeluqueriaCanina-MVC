@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mascota traer</title>
+</head>
+
+<body>
+    <div class="titulo">
+
+        <h1>Mascota N°<SPAn th:text="${masco.idDTOMascota}"></SPAn></h1>
+
+    </div>
+
+    <div class="cuerpo">
+        <p>Nombre: <span th:text="${masco.nombre}"></span></p>
+        <p>Color: <span th:text="${masco.color}"></span></p>
+        <p>Raza: <span th:text="${masco.raza}"></span></p>
+        <p>Atención Especial: <span th:text="${masco.atencionEspecial}"></span></p>
+        <p>Alérgico: <span th:text="${masco.alergico}"></span></p>
+        <p>Observaciones: <span th:text="${masco.observaciones}"></span></p>
+        <p>Dueño: <span th:text="${masco.nombreDuenio}"></span></p>
+        <p>ID Dueño: <span th:text="${masco.idDuenio}"></span></p>
+
+
+
+
+    </div>
+
+    <div>
+        <a th:href="@{/mascotas/listar}"><button>Volver al listado</button></a>
+        <a th:href="@{/index}"><button>Volver a la home</button></a>
+
+    </div>
+
+
+
+</body>
+
+</html>

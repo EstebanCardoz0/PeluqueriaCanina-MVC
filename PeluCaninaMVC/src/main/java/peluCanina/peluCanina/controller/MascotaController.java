@@ -36,7 +36,7 @@ public class MascotaController {
     @PostMapping("/crear")
     public String crearMascota(@RequestParam String nombre, @RequestParam String color, @RequestParam String raza,
             @RequestParam String alergico, @RequestParam String atencionEspecial,
-            @RequestParam(required = false) String observaciones, @RequestParam(required=false) Duenio duen,
+            @RequestParam(required = false) String observaciones, @RequestParam(required = false) Duenio duen,
             ModelMap modelo) {
 
         try {
@@ -58,23 +58,26 @@ public class MascotaController {
             modelo.addAttribute("duenios", duenios);
 
             modelo.put("error", ex.getMessage());
+            return "mascotaAlta.html";
 
         }
+        return "index.html";
+    }
 
-        return "mascotaAlta.html";
+    @GetMapping("/traer")
+    public String idTraer(@RequestParam String id) {
+        return "redirect:/mascotas/traer/" + id;
     }
 
     @GetMapping("/traer/{id}")
-    public DTOMascota traerMascota(@PathVariable Long id) {
-        return mascoSer.traerMascotaDTO(id);
+    public String traerMascota(@PathVariable Long id, ModelMap modelo) {
 
+        DTOMascota masco = mascoSer.traerMascotaDTO(id);
+        modelo.addAttribute("masco", masco);
+
+        return "mascotaTraer.html";
     }
 
-//    @GetMapping("/listar")
-//    public List<DTOMascota> listarMascotas() {
-//
-//        return mascoSer.listarMascotasDTO();
-//    }
     @GetMapping("/listar")
     public String listarMascotas(ModelMap modelo) {
 
@@ -86,24 +89,43 @@ public class MascotaController {
     }
 
     @GetMapping("/borrar/{id}")
-    public void borrarMascota(@PathVariable Long id) {
+    public String borrarMascota(@PathVariable Long id) {
 
         mascoSer.borrarMascota(id);
-//        return "Mascota borrada con éxito";
+        return "redirect:/mascotas/listar";
+
     }
 
-    @PutMapping("/editar/{id}")
-    public DTOMascota editarMascota(@PathVariable Long id, @RequestParam String nombre,
+    @GetMapping("/editar/{id}")
+    public String editarMascota(@PathVariable Long id, ModelMap modelo) {
+
+        modelo.addAttribute("duenios", duenSer.listarDuenios());
+
+        modelo.put("mascota", mascoSer.traerMascota(id));
+
+        return "mascotaEditar.html";
+    }
+
+    @PostMapping("/editar/{id}")
+    public String editarMascota(@PathVariable Long id, @RequestParam String nombre,
             @RequestParam String color, @RequestParam String raza, @RequestParam String atencionEspecial, @RequestParam String alergico,
-            @RequestParam String observaciones, @RequestParam Long duen) throws MiException {
+            @RequestParam(required = false) String observaciones,
+            @RequestParam(required = false) Duenio duen, ModelMap modelo) throws MiException {
 
-        Duenio du = duenSer.traerDuenio(duen);
+          
+        
+        try {
+            Mascota mas = new Mascota(id, nombre, color, raza, atencionEspecial, alergico, observaciones, duen);
+            mascoSer.editarMascota(mas);
+            modelo.put("exito", "mascota creada correctamente");
 
-        Mascota mas = new Mascota(id, nombre, color, raza, atencionEspecial, alergico, observaciones, du);
+            return "redirect:/mascotas/listar";
 
-        mascoSer.editarMascota(mas);
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
 
-        return mascoSer.traerMascotaDTO(id);
+            return "redirect:/mascotas/editar/";
+        }
 
     }
 
