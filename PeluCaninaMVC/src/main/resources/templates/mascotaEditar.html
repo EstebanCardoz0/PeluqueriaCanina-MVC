@@ -72,20 +72,40 @@
         </div>
 
 
-        <div>
+        <!-- <div>
 
             <label for="duenios">Dueño</label>
             <select id="duenios" name="duen">
 
+                <option value="">Seleccionar Dueño</option>
+                <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"
+                    th:selected="${duenio.id == mascota.duen.id}"></option>
+            </select>
+        </div> -->
 
-                <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${mascota.duen.nombre}"></option>
+        <div>
+            <label for="duenios">Dueño</label>
+            <select id="duenios" name="duen">
+
+                <option value="">Seleccionar Dueño</option>
+
+                <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"
+                    th:if="${mascota.duen != null and duenio.id == mascota.duen.id}" th:selected="selected"></option>
+
+                <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"
+                    th:unless="${ mascota.duen != null and duenio.id == mascota.duen.id}"></option>
             </select>
         </div>
 
 
 
+
         <button style="color: black;background-color: orange;border-color: orange;" type="submit"
             class="btn btn-primary mt-3 botones"><strong>Actualizar</strong></button>
+
+
+
+
 
 
         <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
@@ -102,11 +122,8 @@
                 <p class="card- be th o" th:text="${exito}"></p>
             </div>
         </div>
-
-
+        
     </form>
-
-
 </body>
 
 </html>

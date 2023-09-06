@@ -79,12 +79,14 @@ public class MascotaController {
     }
 
     @GetMapping("/listar")
-    public String listarMascotas(ModelMap modelo) {
+    public String listarMascotas(ModelMap modelo) throws MiException {
 
         List<Mascota> mascotas = mascoSer.listarMascotas();
 
         modelo.addAttribute("mascotas", mascotas);
 
+//        modelo.put("exito", "mascota creada correctamente");
+//        modelo.put("error", ex.getMessage());
         return "mascotaLista.html";
     }
 
@@ -112,21 +114,20 @@ public class MascotaController {
             @RequestParam(required = false) String observaciones,
             @RequestParam(required = false) Duenio duen, ModelMap modelo) throws MiException {
 
-          
-        
         try {
             Mascota mas = new Mascota(id, nombre, color, raza, atencionEspecial, alergico, observaciones, duen);
             mascoSer.editarMascota(mas);
             modelo.put("exito", "mascota creada correctamente");
 
-            return "redirect:/mascotas/listar";
+            return "redirect:../listar";
 
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
 
-            return "redirect:/mascotas/editar/";
+            return "redirect:../editar/" + id;
+//            return "mascotaEditar.html";
         }
-
+//return "index.html";
     }
 
 }//final
