@@ -1,8 +1,6 @@
 package peluCanina.peluCanina.controller;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -52,6 +50,8 @@ public class MascotaController {
             mascoSer.crearMascota(mas);
 
             modelo.put("exito", "mascota creada correctamente");
+            
+            return "redirect:/mascotas/listar";
 
         } catch (MiException ex) {
             List<Duenio> duenios = duenSer.listarDuenios();
@@ -61,21 +61,30 @@ public class MascotaController {
             return "mascotaAlta.html";
 
         }
-        return "index.html";
+      
     }
 
     @GetMapping("/traer")
-    public String idTraer(@RequestParam String id) {
+    public String idTraer(@RequestParam String id, ModelMap modelo) throws Exception {
+
         return "redirect:/mascotas/traer/" + id;
+
     }
 
     @GetMapping("/traer/{id}")
-    public String traerMascota(@PathVariable Long id, ModelMap modelo) {
+    public String traerMascota(@PathVariable Long id, ModelMap modelo) throws Exception {
 
-        DTOMascota masco = mascoSer.traerMascotaDTO(id);
-        modelo.addAttribute("masco", masco);
+        try {
+            DTOMascota masco = mascoSer.traerMascotaDTO(id);
+            modelo.addAttribute("masco", masco);
 
-        return "mascotaTraer.html";
+            return "mascotaTraer.html";
+        } catch (Exception e) {
+
+            return "errorMascotaTraer.html";
+
+        }
+
     }
 
     @GetMapping("/listar")
@@ -85,8 +94,6 @@ public class MascotaController {
 
         modelo.addAttribute("mascotas", mascotas);
 
-//        modelo.put("exito", "mascota creada correctamente");
-//        modelo.put("error", ex.getMessage());
         return "mascotaLista.html";
     }
 
@@ -117,17 +124,13 @@ public class MascotaController {
         try {
             Mascota mas = new Mascota(id, nombre, color, raza, atencionEspecial, alergico, observaciones, duen);
             mascoSer.editarMascota(mas);
-            modelo.put("exito", "mascota creada correctamente");
 
             return "redirect:../listar";
 
         } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
 
             return "redirect:../editar/" + id;
-//            return "mascotaEditar.html";
         }
-//return "index.html";
     }
 
 }//final

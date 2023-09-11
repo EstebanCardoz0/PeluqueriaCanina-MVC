@@ -2,11 +2,14 @@ package peluCanina.peluCanina.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peluCanina.peluCanina.DTO.DTODuenio;
 import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Duenio;
+import peluCanina.peluCanina.exceptions.MiException;
 import peluCanina.peluCanina.repository.IDuenioRepository;
 
 @Service
@@ -19,7 +22,9 @@ public class DuenioService implements IDuenioService {
     IMascotaService mascoService;
 
     @Override
-    public void crearDuenio(Duenio duen) {
+    public void crearDuenio(Duenio duen) throws MiException {
+
+        this.validar(duen.getNombre(), duen.getCelular(), duen.getDireccion());
 
         duenioRepo.save(duen);
     }
@@ -112,9 +117,27 @@ public class DuenioService implements IDuenioService {
         du.setCelular(duen.getCelular());
         du.setDireccion(duen.getDireccion());
         du.setMascotas(duen.getMascotas());
-        
-        
-        this.crearDuenio(du);
+
+        try {
+            this.crearDuenio(du);
+        } catch (MiException ex) {
+            Logger.getLogger(DuenioService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void validar(String nombre, String celular, String direccion) throws MiException {
+
+        if (nombre.isEmpty() || nombre == null) {
+            throw new MiException("El nombre no puede ser nulo o estar vacío");
+        }
+        if (celular.isEmpty() || celular == null) {
+            throw new MiException("El celular no puede ser nulo o estar vacío");
+        }
+        if (direccion.isEmpty() || direccion == null) {
+            throw new MiException("La direcciòn no puede ser nula o estar vacía");
+        }
+
     }
 
 }
