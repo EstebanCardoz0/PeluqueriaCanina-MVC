@@ -105,6 +105,8 @@ public class DuenioService implements IDuenioService {
 
     @Override
     public void borrarDuenio(Long id) {
+        
+        
         duenioRepo.deleteById(id);
     }
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    
+</head>
+
+<body>
+    <div class="titulo">
+
+        <h1>Dueño N°<SPAn th:text="${duenio.idDTODuenio}"></SPAn></h1>
+
+    </div>
+
+    <div class="cuerpo">
+        <p>Nombre: <span th:text="${duenio.nombre}"></span></p>
+        <p>Celular: <span th:text="${duenio.celular}"></span></p>
+        <p>Dirección: <span th:text="${duenio.direccion}"></span></p>
+
+        <p>Mascotas: <span th:if="${duenio.mascosDTO != null }">
+                <ul>
+                    <li th:each="mascota:${duenio.mascosDTO}" th:text="${mascota.nombre}"></li>
+                </ul>
+
+
+            </span>
+            <span th:if="${duenio.mascosDTO == null or duenio.mascosDTO.isEmpty() }">
+               (No tiene)
+            </span>
+        </p>
+
+        
+
+
+
+
+    </div>
+
+    <div>
+        <a th:href="@{/duenios/listar}"><button>Volver al listado</button></a>
+        <a th:href="@{/index}"><button>Volver a la home</button></a>
+
+    </div>
+</body>
+
+</html>

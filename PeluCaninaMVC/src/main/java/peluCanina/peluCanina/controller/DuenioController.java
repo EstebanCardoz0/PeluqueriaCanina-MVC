@@ -9,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import peluCanina.peluCanina.DTO.DTODuenio;
 import peluCanina.peluCanina.entity.Duenio;
-import peluCanina.peluCanina.entity.Mascota;
 import peluCanina.peluCanina.exceptions.MiException;
 import peluCanina.peluCanina.service.IDuenioService;
 import peluCanina.peluCanina.service.IMascotaService;
@@ -55,7 +54,7 @@ public class DuenioController {
 
             modelo.put("exito", "mascota creada correctamente");
 
-            return "index.html";
+            return "redirect:/duenios/listar";
 
         } catch (MiException ex) {
 
@@ -66,23 +65,49 @@ public class DuenioController {
 
     }
 
+    @GetMapping("/traer")
+    public String idtraer(@RequestParam String id, ModelMap modelo) throws Exception {
+
+        return "redirect:/duenios/traer/" + id;
+    }
+
     @GetMapping("/traer/{id}")
-    public DTODuenio traerDuenio(@PathVariable Long id) {
-        return duenSer.traerDuenioDTO(id);
+    public String traerDuenio(@PathVariable Long id, ModelMap modelo) throws Exception {
+
+        try {
+            DTODuenio duen = duenSer.traerDuenioDTO(id);
+            modelo.addAttribute("duenio", duen);
+
+            return "duenioTraer.html";
+        } catch (Exception e) {
+            return "errorDuenioTraer.html";
+        }
 
     }
 
     @GetMapping("/listar")
-    public List<DTODuenio> listarDuenio() {
+    public String listarDuenio(ModelMap modelo) throws MiException {
 
-        return duenSer.listarDueniosDTO();
+        modelo.addAttribute("duenios", duenSer.listarDuenios());
+
+        return "duenioLista.html";
+
     }
 
-    @DeleteMapping("/borrar/{id}")
+    @GetMapping("/borrar/{id}")
     public String borrarDuenio(@PathVariable Long id) {
 
         duenSer.borrarDuenio(id);
-        return "Dueño borrado con éxito";
+        return "redirect:/duenios/listar";
+    }
+
+    @GetMapping("editar/{id}")
+    public String editarDuenio(@PathVariable Long id, ModelMap modelo) {
+
+//        modelo.addAttribute("duenio", duenSer.listarDuenios());
+        modelo.put("duenio", duenSer.traerDuenio(id));
+
+        return "duenioEditar.html";
     }
 
     @PutMapping("/editar/{id}")

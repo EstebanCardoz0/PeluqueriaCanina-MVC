@@ -50,7 +50,7 @@ public class MascotaController {
             mascoSer.crearMascota(mas);
 
             modelo.put("exito", "mascota creada correctamente");
-            
+
             return "redirect:/mascotas/listar";
 
         } catch (MiException ex) {
@@ -61,7 +61,7 @@ public class MascotaController {
             return "mascotaAlta.html";
 
         }
-      
+
     }
 
     @GetMapping("/traer")
@@ -100,8 +100,14 @@ public class MascotaController {
     @GetMapping("/borrar/{id}")
     public String borrarMascota(@PathVariable Long id) {
 
-        mascoSer.borrarMascota(id);
-        return "redirect:/mascotas/listar";
+        if (duenSer.traerDuenio(id).getMascotas() == null ) {
+            mascoSer.borrarMascota(id);
+            return "redirect:/mascotas/listar";
+        } else {
+//            System.out.println("g");
+            return "errorDuenioBorrar.html";
+
+        }
 
     }
 

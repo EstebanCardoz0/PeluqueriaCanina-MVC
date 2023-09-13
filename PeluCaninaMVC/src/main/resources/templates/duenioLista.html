@@ -1,59 +1,84 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dueño lista</title>
-    </head>
-    <body>
-        <table class="table">
-            <thead>
-                <tr>
 
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Celular</th>
-                    <th>Direccion</th>
-                    <th>Mascotas</th>
-                    <th>ID Mascota</th>
-                    <th>Mascota</th>
+<head>
+    <meta charset="UTF-8">
+    <title>Dueño lista</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-                    <th colspan="2">Acciones</th>
+</head>
 
+<body>
 
-                </tr>
-            </thead>
-            
-            <tbody th:each="dueni:${duenios}">
-                <tr>
-                    <th th:text="${dueni.id}"></th>
-                    <td th:text="${dueni.nombre}"></td>
-                    <td th:text="${dueni.celular}"></td>
-                    <td th:text="${dueni.direccion}"></td>
-                    <td th:text="${dueni.idMascota}"></td>
-                    <td th:text="${dueni.nombreMascota}"></td>
+    <div>
+        <form action="/duenios/traer" method="get">
+
+            <label for="Buscar por id">Buscar por número ID</label>
+            <input type="number" name="id" id="Buscar por id" value="1">
+            <button type="submit">Buscar</button>
+
+        </form>
+
+    </div>
+
+    <div>
+        <a th:href="@{/duenios/alta}"> <button>Crear Dueño</button></a>
+
+    </div>
 
 
-                    <!--                    <td ><ul>
-                    
-                                                <li th:each="masco : ${dueni.mascotas}" th:text="${masco.nombre}"></li>
-                                            </ul>
-                    
-                    
-                                        </td>-->
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Celular</th>
+                <th>Direccion</th>
+                <th>Mascotas</th>
+                <th colspan="2">Acciones</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody th:each="dueni:${duenios}">
+            <tr>
+                <th th:text="${dueni.id}"></th>
+                <td th:text="${dueni.nombre}"></td>
+                <td th:text="${dueni.celular}"></td>
+                <td th:text="${dueni.direccion}"></td>
+
+
+
+                <td>
+                    <ul>
+
+                        <li th:each="masco : ${dueni.mascotas}" th:text="${masco.nombre}"></li>
+                        <span th:if="${dueni.mascotas == null or dueni.mascotas.isEmpty()}">(No tiene)</span>
+
+                    </ul>
+
+
+                </td>
 
 
 
 
-                    <td>
-                        <a th:href="@{/duenio/editar/__${dueni.id}__}"><i></i>Modificar</a>
-                    </td>
-                    <td>
-                        <a th:href="@{/duenio/borrar/__${dueni.id}__}"><i></i>Borrar</a>
-                    </td>
+                <td>
+                    <a th:href="@{/duenios/editar/__${dueni.id}__}"><i></i>Modificar</a>
+                </td>
+                <td>
+                    <a th:href="@{/duenios/borrar/__${dueni.id}__}"><i></i>Borrar</a>
+                </td>
 
 
-                </tr>
-            </tbody>
-        </table>
-    </body>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/index}"><button>Volver a la home</button></a>
+</body>
+
 </html>
