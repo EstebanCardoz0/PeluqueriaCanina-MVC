@@ -2,8 +2,6 @@ package peluCanina.peluCanina.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peluCanina.peluCanina.DTO.DTODuenio;
@@ -46,6 +44,7 @@ public class DuenioService implements IDuenioService {
         dtoDuen.setNombre(duen.getNombre());
         dtoDuen.setDireccion(duen.getDireccion());
         dtoDuen.setCelular(duen.getCelular());
+        dtoDuen.setMascosDTO(null);
 
         List<DTOMascota> mascosDTO = new ArrayList();
 
@@ -70,61 +69,17 @@ public class DuenioService implements IDuenioService {
     }
 
     @Override
-    public List<DTODuenio> listarDueniosDTO() {
-
-        List<DTODuenio> listarDuenios = new ArrayList();
-
-        for (Duenio duen : duenioRepo.findAll()) {
-
-            DTODuenio dtoDuen = new DTODuenio();
-
-            dtoDuen.setIdDTODuenio(duen.getId());
-            dtoDuen.setNombre(duen.getNombre());
-            dtoDuen.setDireccion(duen.getDireccion());
-            dtoDuen.setCelular(duen.getCelular());
-
-            List<DTOMascota> mascosDTO = new ArrayList();
-
-            for (DTOMascota masco : mascoService.listarMascotasDTO()) {
-
-                if (masco.getIdDuenio().equals(duen.getId().toString())) {
-
-                    mascosDTO.add(masco);
-
-                }//final if
-
-                dtoDuen.setMascosDTO(mascosDTO);
-
-            }//final for lista mascos
-
-            listarDuenios.add(dtoDuen);
-        }//final for
-
-        return listarDuenios;
-    }
-
-    @Override
     public void borrarDuenio(Long id) {
-        
-        
+
         duenioRepo.deleteById(id);
     }
 
     @Override
-    public void editarDuenio(Duenio duen) {
+    public void editarDuenio(Duenio duen) throws MiException {
 
-        Duenio du = this.traerDuenio(duen.getId());
+        this.validar(duen.getNombre(), duen.getCelular(), duen.getDireccion());
 
-        du.setNombre(duen.getNombre());
-        du.setCelular(duen.getCelular());
-        du.setDireccion(duen.getDireccion());
-        du.setMascotas(duen.getMascotas());
-
-        try {
-            this.crearDuenio(du);
-        } catch (MiException ex) {
-            Logger.getLogger(DuenioService.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        duenioRepo.save(duen);
     }
 
     @Override
@@ -137,7 +92,7 @@ public class DuenioService implements IDuenioService {
             throw new MiException("El celular no puede ser nulo o estar vacío");
         }
         if (direccion.isEmpty() || direccion == null) {
-            throw new MiException("La direcciòn no puede ser nula o estar vacía");
+            throw new MiException("La dirección no puede ser nula o estar vacía");
         }
 
     }

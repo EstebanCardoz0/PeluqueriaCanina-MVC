@@ -20,7 +20,7 @@ public interface IMascotaService {
 
     public void borrarMascota(Long id);
 
-    public void editarMascota(Mascota mas)throws MiException;
+    public void editarMascota(Mascota mas)throws Exception;
 
     public void validar(String nombre, String color, String raza, String alergico, String atencionEspecial, Duenio duenio) throws MiException;
 

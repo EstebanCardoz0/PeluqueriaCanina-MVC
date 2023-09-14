@@ -22,7 +22,7 @@
             </div>
             <div class="form-group my-3">
                 <label for="color">Celular</label>
-                <input id="color" type="text" class="form-control" name="celular" placeholder="3794-112233">
+                <input id="color" type="number" class="form-control" name="celular" placeholder="3794-112233">
             </div>
             <div class="form-group my-3">
                 <label for="raza">dirección</label>
@@ -37,6 +37,12 @@
                 <div class="card-body">
                     <h5 class="card-title">Exito!</h5>
                     <p class="card- be th o" th:text="${exito}"></p>
+                </div>
+            </div>
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+                <div class="card-body">
+                    <h5 class="card-title">Error ð</h5>
+                    <p class="card-text" th:text="${error}"></p>
                 </div>
             </div>
         </form>

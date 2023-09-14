@@ -26,7 +26,7 @@ public class MascotaController {
     public String crearMascota(ModelMap modelo) {
         List<Duenio> duenios = duenSer.listarDuenios();
 
-        modelo.addAttribute("duenios", duenios);
+        modelo.put("duenios", duenios);
 
         return "mascotaAlta.html";
     }
@@ -76,7 +76,7 @@ public class MascotaController {
 
         try {
             DTOMascota masco = mascoSer.traerMascotaDTO(id);
-            modelo.addAttribute("masco", masco);
+            modelo.put("masco", masco);
 
             return "mascotaTraer.html";
         } catch (Exception e) {
@@ -88,7 +88,7 @@ public class MascotaController {
     }
 
     @GetMapping("/listar")
-    public String listarMascotas(ModelMap modelo) throws MiException {
+    public String listarMascotas(ModelMap modelo) {
 
         List<Mascota> mascotas = mascoSer.listarMascotas();
 
@@ -100,14 +100,8 @@ public class MascotaController {
     @GetMapping("/borrar/{id}")
     public String borrarMascota(@PathVariable Long id) {
 
-        if (duenSer.traerDuenio(id).getMascotas() == null ) {
-            mascoSer.borrarMascota(id);
-            return "redirect:/mascotas/listar";
-        } else {
-//            System.out.println("g");
-            return "errorDuenioBorrar.html";
-
-        }
+        mascoSer.borrarMascota(id);
+        return "redirect:/mascotas/listar";
 
     }
 
@@ -125,7 +119,7 @@ public class MascotaController {
     public String editarMascota(@PathVariable Long id, @RequestParam String nombre,
             @RequestParam String color, @RequestParam String raza, @RequestParam String atencionEspecial, @RequestParam String alergico,
             @RequestParam(required = false) String observaciones,
-            @RequestParam(required = false) Duenio duen, ModelMap modelo) throws MiException {
+            @RequestParam(required = false) Duenio duen, ModelMap modelo) throws Exception {
 
         try {
             Mascota mas = new Mascota(id, nombre, color, raza, atencionEspecial, alergico, observaciones, duen);
@@ -133,10 +127,10 @@ public class MascotaController {
 
             return "redirect:../listar";
 
-        } catch (MiException ex) {
+        } catch (Exception ex) {
 
             return "redirect:../editar/" + id;
         }
     }
 
-}//final
+}

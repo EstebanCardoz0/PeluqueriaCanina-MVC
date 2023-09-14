@@ -15,12 +15,9 @@ public interface IDuenioService {
 
     public void borrarDuenio(Long id);
 
-    public void editarDuenio(Duenio duen);
-
-    public List<DTODuenio> listarDueniosDTO();
-    
+    public void editarDuenio(Duenio duen) throws MiException;
 
     public DTODuenio traerDuenioDTO(Long id);
-    
+
     public void validar(String nombre, String celular, String direccion) throws MiException;
 }

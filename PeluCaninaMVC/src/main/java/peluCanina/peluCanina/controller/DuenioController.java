@@ -1,6 +1,5 @@
 package peluCanina.peluCanina.controller;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +28,7 @@ public class DuenioController {
         return "duenioAlta.html";
     }
 
-    @PostMapping("/crearrrrr")
-    public String crearDuenio(@RequestBody Duenio duen) {
 
-        try {
-            duenSer.crearDuenio(duen);
-        } catch (MiException ex) {
-            Logger.getLogger(DuenioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return "El dueño se creó correctamente";
-    }
 
     @PostMapping("/crear")
     public String crearDuenio(@RequestParam String nombre, @RequestParam String celular, @RequestParam String direccion,
@@ -76,19 +66,20 @@ public class DuenioController {
 
         try {
             DTODuenio duen = duenSer.traerDuenioDTO(id);
-            modelo.addAttribute("duenio", duen);
+            modelo.put("duenio", duen);
 
             return "duenioTraer.html";
         } catch (Exception e) {
+            System.out.println("el id dto es: " +id);
             return "errorDuenioTraer.html";
         }
 
     }
 
     @GetMapping("/listar")
-    public String listarDuenio(ModelMap modelo) throws MiException {
+    public String listarDuenio(ModelMap modelo)  {
 
-        modelo.addAttribute("duenios", duenSer.listarDuenios());
+        modelo.put("duenios", duenSer.listarDuenios());
 
         return "duenioLista.html";
 
@@ -97,32 +88,32 @@ public class DuenioController {
     @GetMapping("/borrar/{id}")
     public String borrarDuenio(@PathVariable Long id) {
 
-        duenSer.borrarDuenio(id);
-        return "redirect:/duenios/listar";
+        try {
+            duenSer.borrarDuenio(id);
+            return "redirect:/duenios/listar";
+        } catch (Exception e) {
+            return "errorDuenioBorrar.html";
+        }
     }
 
     @GetMapping("editar/{id}")
     public String editarDuenio(@PathVariable Long id, ModelMap modelo) {
 
-//        modelo.addAttribute("duenio", duenSer.listarDuenios());
         modelo.put("duenio", duenSer.traerDuenio(id));
 
         return "duenioEditar.html";
     }
 
-    @PutMapping("/editar/{id}")
-    public DTODuenio editarDuenio(@PathVariable Long id, @RequestParam String nombre,
-            @RequestParam String celular, @RequestParam String direccion) {
+    @PostMapping("/editar/{id}")
+    public String editarDuenio(@PathVariable Long id, @RequestParam String nombre,
+            @RequestParam String celular, @RequestParam String direccion) throws MiException {
 
-        Duenio duen = new Duenio();
-        duen.setNombre(nombre);
-        duen.setDireccion(direccion);
-        duen.setCelular(celular);
-        duen.setId(id);
-
-        duenSer.editarDuenio(duen);
-
-        return duenSer.traerDuenioDTO(id);
+        try {
+            duenSer.editarDuenio(new Duenio(id, nombre, celular, direccion, duenSer.traerDuenio(id).getMascotas()));
+            return "redirect:../listar";
+        } catch (MiException e) {
+            return "redirect:../editar/" + id;
+        }
 
     }
 
