@@ -16,8 +16,6 @@ public class MascotaService implements IMascotaService {
     @Autowired
     IMascotaRepository mascoRepo;
 
-//    @Autowired @Lazy
-//    IDuenioService duenSer;
     @Override
     public void crearMascota(Mascota mas) throws MiException {
 
@@ -92,6 +90,7 @@ public class MascotaService implements IMascotaService {
         }
 
         return listarMascotas;
+//        return null;
     }
 
     @Override
@@ -100,7 +99,7 @@ public class MascotaService implements IMascotaService {
     }
 
     @Override
-    public void editarMascota(Mascota mas) throws MiException {
+    public void editarMascota(Mascota mas) throws Exception {
 
         this.validar(mas.getNombre(), mas.getColor(), mas.getRaza(), mas.getAlergico(),
                 mas.getAtencionEspecial(), mas.getDuen());

@@ -1,8 +1,6 @@
 package peluCanina.peluCanina.controller;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,7 +26,7 @@ public class MascotaController {
     public String crearMascota(ModelMap modelo) {
         List<Duenio> duenios = duenSer.listarDuenios();
 
-        modelo.addAttribute("duenios", duenios);
+        modelo.put("duenios", duenios);
 
         return "mascotaAlta.html";
     }
@@ -53,6 +51,8 @@ public class MascotaController {
 
             modelo.put("exito", "mascota creada correctamente");
 
+            return "redirect:/mascotas/listar";
+
         } catch (MiException ex) {
             List<Duenio> duenios = duenSer.listarDuenios();
             modelo.addAttribute("duenios", duenios);
@@ -61,21 +61,30 @@ public class MascotaController {
             return "mascotaAlta.html";
 
         }
-        return "index.html";
+
     }
 
     @GetMapping("/traer")
-    public String idTraer(@RequestParam String id) {
+    public String idTraer(@RequestParam String id, ModelMap modelo) throws Exception {
+
         return "redirect:/mascotas/traer/" + id;
+
     }
 
     @GetMapping("/traer/{id}")
-    public String traerMascota(@PathVariable Long id, ModelMap modelo) {
+    public String traerMascota(@PathVariable Long id, ModelMap modelo) throws Exception {
 
-        DTOMascota masco = mascoSer.traerMascotaDTO(id);
-        modelo.addAttribute("masco", masco);
+        try {
+            DTOMascota masco = mascoSer.traerMascotaDTO(id);
+            modelo.put("masco", masco);
 
-        return "mascotaTraer.html";
+            return "mascotaTraer.html";
+        } catch (Exception e) {
+
+            return "errorMascotaTraer.html";
+
+        }
+
     }
 
     @GetMapping("/listar")
@@ -110,23 +119,18 @@ public class MascotaController {
     public String editarMascota(@PathVariable Long id, @RequestParam String nombre,
             @RequestParam String color, @RequestParam String raza, @RequestParam String atencionEspecial, @RequestParam String alergico,
             @RequestParam(required = false) String observaciones,
-            @RequestParam(required = false) Duenio duen, ModelMap modelo) throws MiException {
+            @RequestParam(required = false) Duenio duen, ModelMap modelo) throws Exception {
 
-          
-        
         try {
             Mascota mas = new Mascota(id, nombre, color, raza, atencionEspecial, alergico, observaciones, duen);
             mascoSer.editarMascota(mas);
-            modelo.put("exito", "mascota creada correctamente");
 
-            return "redirect:/mascotas/listar";
+            return "redirect:../listar";
 
-        } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
+        } catch (Exception ex) {
 
-            return "redirect:/mascotas/editar/";
+            return "redirect:../editar/" + id;
         }
-
     }
 
-}//final
+}

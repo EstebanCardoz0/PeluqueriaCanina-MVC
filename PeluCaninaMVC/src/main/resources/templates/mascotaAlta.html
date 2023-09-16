@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Crear Mascota</title>
+        
     </head>
     <body>
 
@@ -31,14 +32,14 @@
                 <label for="alergico">SI</label>
                 <input id="alergico" type="radio" value="SI" class="form-control" name="alergico">
                 <label for="alergic">NO</label>
-                <input id="alergic" type="radio" value="NO" class="form-control" name="alergico">
+                <input id="alergic" type="radio" value="NO" class="form-control" name="alergico" checked="true">
             </div>
             <div class="form-group my-3">
                 <label>Atención especial</label> <br>
                 <label for="paten">SI</label>
                 <input id="paten" type="radio" value="SI" class="form-control" name="atencionEspecial">
                 <label for="pate">NO</label>
-                <input id="pate" type="radio" value="NO" class="form-control" name="atencionEspecial">
+                <input id="pate" type="radio" value="NO" class="form-control" name="atencionEspecial" checked="true">
             </div>
             <div class="form-group my-3">
                 <label for="cantidadPuertas">Observaciones</label>
@@ -46,11 +47,7 @@
                        placeholder="Le gusta jugar">
             </div>
             
-            <!--            <div class="form-group my-3">
-                            <label for="idDuenio">Dueño</label>
-                            <input id="idDuenio" type="number" size="50" width="56" class="form-control" name="idDuenio"
-                                   >
-                        </div>-->
+          
 
 
             <div>
@@ -59,7 +56,7 @@
                 
                 <select id="duenios" name="duen">
                     <option value="" disabled selected>Selecciona un dueño</option>
-                    <!-- Iteramos directamente dentro del select para mostrar las opciones -->
+                
                     <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"></option>
                 </select>
             </div>
@@ -82,7 +79,14 @@
             <button type="submit"
                     class="btn btn-primary mt-3 botones"><strong>Ingresar</strong></button>
         </form>
-        <!--<p th:if="${exito}" th:text="${exito}" style="color: green;"></p>-->
+
+        <div>
+            <a th:href="@{/index}"><button>Volver a la home</button></a>
+    
+        </div>
+        <div>
+            <a th:href="@{/mascotas/listar}"><button>Listado de mascotas</button></a>
+        </div>
         
          
 

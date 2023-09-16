@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Mascota lista</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 </head>
 <<<<<<< HEAD
 
@@ -71,9 +73,14 @@
     <div>
         <form action="/mascotas/traer" method="get">
             <label for="id">Buscar por número ID</label>
-            <input id="id" name="id" type="text">
+            <input id="id" name="id" type="number" value="1">
             <button type="submit">Buscar</button>
         </form>
+
+
+    </div>
+    <div>
+        <a th:href="@{/mascotas/alta}"><button>crear mascota</button></a>
     </div>
 
 
@@ -136,26 +143,18 @@
         </tbody>
     </table>
 
-    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-        <div class="card-body">
-            <h5 class="card-title">Error</h5>
-            <p class="card-text" th:text="${error}"></p>
-        </div>
-    </div>
-
-
-    <div th:if="${exito != null}" class="Card text-white bg-success mb-3 mt-3 mensajeExito">
-        <div class="card-body">
-            <h5 class="card-title">Exito!</h5>
-            <p class="card- be th o" th:text="${exito}"></p>
-        </div>
-    </div>
+    
 
     <div>
         <a th:href="@{/index}"><button>Volver a la home</button></a>
 
     </div>
+<<<<<<< HEAD
 >>>>>>> 5bba98b6a2ecff790dcf6a4d5dfb98ee902e9fa0
+=======
+
+
+>>>>>>> aff40941ef1a5f5fb77a00aadc6a55f318778967
 </body>
 
 </html>
