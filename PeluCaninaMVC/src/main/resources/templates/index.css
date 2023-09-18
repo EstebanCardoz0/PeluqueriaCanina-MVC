@@ -1,7 +1,19 @@
 nav {
 
-    background-color: red;
+    background-color: cyan;
+
 }
+
+.titulonav{
+    color: white;
+   
+   border: 1px;
+   font-size: 1.5rem;
+   margin: .3rem;
+}
+
+
+
 
 .coraje {
     width: 30rem;
@@ -10,9 +22,55 @@ nav {
 
 .d-grid {
 
-    margin-right: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 
     text-align: center;
+
+    border: 1px solid red;
 }
 
-nav{background-color: #8b5e69;}
+
+
+.titulo {
+    font-size: 300%;
+    font-weight: bolder;
+    border: .5rem solid #fa7c9c;
+    border-radius: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: .5rem ;
+
+    
+}
+
+.btn {
+    background-color: #fa7c9c;
+    border-color: #fa7c9c;
+    color: black;
+    font-weight: bold;
+    width: 15rem;
+
+}
+
+.btn:hover {
+    background-color: #f7a2b8;
+    border-color: #f7a2b8;
+
+
+}
+
+.material-symbols-outlined{
+
+    color: #f7a2b8;
+}
+
+a:link{
+
+    display: flex;
+    margin-top: .3rem;
+}
