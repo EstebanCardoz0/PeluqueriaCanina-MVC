@@ -1,6 +1,7 @@
 package peluCanina.peluCanina.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,10 +33,7 @@ public class MascotaController {
     }
 
     @PostMapping("/crear")
-    public String crearMascota(@RequestParam String nombre, @RequestParam String color, @RequestParam String raza,
-            @RequestParam String alergico, @RequestParam String atencionEspecial,
-            @RequestParam(required = false) String observaciones, @RequestParam(required = false) Duenio duen,
-            ModelMap modelo) {
+    public String crearMascota(@RequestParam String nombre, @RequestParam String color, @RequestParam String raza, @RequestParam String alergico, @RequestParam String atencionEspecial, @RequestParam(required = false) String observaciones, @RequestParam(required = false) Duenio duen, ModelMap modelo) {
 
         try {
             Mascota mas = new Mascota();
@@ -116,10 +114,10 @@ public class MascotaController {
     }
 
     @PostMapping("/editar/{id}")
-    public String editarMascota(@PathVariable Long id, @RequestParam String nombre,
-            @RequestParam String color, @RequestParam String raza, @RequestParam String atencionEspecial, @RequestParam String alergico,
-            @RequestParam(required = false) String observaciones,
-            @RequestParam(required = false) Duenio duen, ModelMap modelo) throws Exception {
+    public String editarMascota(@PathVariable Long id, @RequestParam String nombre, @RequestParam String color, @RequestParam String raza,
+                                @RequestParam String atencionEspecial, @RequestParam String alergico,
+                                @RequestParam(required = false) String observaciones,
+                                @RequestParam(required = false) Duenio duen, ModelMap modelo) throws Exception {
 
         try {
             Mascota mas = new Mascota(id, nombre, color, raza, atencionEspecial, alergico, observaciones, duen);
