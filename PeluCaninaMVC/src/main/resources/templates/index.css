@@ -24,13 +24,12 @@ nav {
 
     margin-left: auto;
     margin-right: auto;
-
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 
     text-align: center;
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 
@@ -64,13 +63,47 @@ nav {
 
 }
 
-.material-symbols-outlined{
-
-    color: #f7a2b8;
-}
 
 a:link{
 
     display: flex;
     margin-top: .3rem;
 }
+
+.opciones{
+margin-top: .1px;
+    /* border: 1px solid blue; */
+}
+
+.img-fluid{
+
+    width: 2rem;
+
+}
+
+.text-body-secondary{
+height: 2rem;
+margin-bottom: .5rem;
+
+}
+.copy{
+height: 2rem;
+margin-top: .5rem ;
+/* border: 1px solid green; */
+}
+/* footer{
+border: 1px solid paleviolet    red;
+padding: 0;
+margin: 0 solid orange ;
+} */
+.container{
+
+margin-top: 1rem;
+}
+.datos{
+    padding: 0rem;
+   margin: 0;
+   margin-top: 3rem;
+/* border: 1px solid palevioletred; */
+}
+
