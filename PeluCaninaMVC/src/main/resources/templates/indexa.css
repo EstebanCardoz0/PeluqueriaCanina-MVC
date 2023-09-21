@@ -1,15 +1,15 @@
 nav {
 
-    background-color: cyan;
+    background-color: black;
 
 }
 
-.titulonav{
+.titulonav {
     color: white;
-   
-   border: 1px;
-   font-size: 1.5rem;
-   margin: .3rem;
+
+    border: 1px;
+    font-size: 1.5rem;
+    margin: .3rem;
 }
 
 
@@ -42,9 +42,9 @@ nav {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: .5rem ;
+    padding-top: .5rem;
 
-    
+
 }
 
 .btn {
@@ -64,46 +64,53 @@ nav {
 }
 
 
-a:link{
+a:link {
 
     display: flex;
     margin-top: .3rem;
 }
 
-.opciones{
-margin-top: .1px;
+.opciones {
+    margin-top: .1px;
     /* border: 1px solid blue; */
 }
 
-.img-fluid{
+.img-fluid {
 
     width: 2rem;
 
 }
 
-.text-body-secondary{
-height: 2rem;
-margin-bottom: .5rem;
+.text-body-secondary {
+    height: 2rem;
+    margin-bottom: .5rem;
 
 }
-.copy{
-height: 2rem;
-margin-top: .5rem ;
-/* border: 1px solid green; */
+
+.copy {
+    height: 2rem;
+    margin-top: .5rem;
+    /* border: 1px solid green; */
 }
+
 /* footer{
 border: 1px solid paleviolet    red;
 padding: 0;
 margin: 0 solid orange ;
 } */
-.container{
+.container {
 
-margin-top: 1rem;
+    margin-top: 1rem;
 }
-.datos{
+
+.datos {
     padding: 0rem;
-   margin: 0;
-   margin-top: 3rem;
-/* border: 1px solid palevioletred; */
+    margin: 0;
+    margin-top: 3rem;
+    /* border: 1px solid palevioletred; */
 }
 
+.titulonav{
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
