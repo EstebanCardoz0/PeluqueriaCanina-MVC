@@ -1,94 +1,100 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Crear Mascota</title>
-        
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Mascota</title>
+    <link rel="stylesheet" href="../static.css/prueba.css"  >
+
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">-->
 
 
-        <form style="max-width: 500pt;margin:  auto;margin-top: 2%;" class="formulario" action="/mascotas/crear" method="POST">
+</head>
+<body>
 
 
-            <div class="form-group my-3">
-                <h3 class="card-title">Ingresá los datos de la mascota</h3>
-            </div>
-
-            <div class="form-group my-3">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Ciro">
-            </div>
-            <div class="form-group my-3">
-                <label for="color">Color</label>
-                <input id="color" type="text" class="form-control" name="color" placeholder="Blanco">
-            </div>
-            <div class="form-group my-3">
-                <label for="raza">Raza</label>
-                <input id="raza" type="text" class="form-control" name="raza" placeholder="Boxer">
-            </div>
-            <div class="form-group my-3">
-                <label>Alergico</label> <br>
-                <label for="alergico">SI</label>
-                <input id="alergico" type="radio" value="SI" class="form-control" name="alergico">
-                <label for="alergic">NO</label>
-                <input id="alergic" type="radio" value="NO" class="form-control" name="alergico" checked="true">
-            </div>
-            <div class="form-group my-3">
-                <label>Atención especial</label> <br>
-                <label for="paten">SI</label>
-                <input id="paten" type="radio" value="SI" class="form-control" name="atencionEspecial">
-                <label for="pate">NO</label>
-                <input id="pate" type="radio" value="NO" class="form-control" name="atencionEspecial" checked="true">
-            </div>
-            <div class="form-group my-3">
-                <label for="cantidadPuertas">Observaciones</label>
-                <input id="cantidadPuertas" type="text"  class="form-control" name="observaciones"
-                       placeholder="Le gusta jugar">
-            </div>
-            
-          
+<form action="/mascotas/crear" method="POST">
 
 
-            <div>
+    <div class="form-group my-3">
+        <h3 class="card-title">Ingresá los datos de la mascota</h3>
+    </div>
 
-                <label for="duenios">Dueño</label>
-                
-                <select id="duenios" name="duen">
-                    <option value="" disabled selected>Selecciona un dueño</option>
-                
-                    <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"></option>
-                </select>
-            </div>
-            
-            
-                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
-                    <div class="card-body">
-                        <h5 class="card-title">Error ð</h5>
-                        <p class="card-text" th:text="${error}"></p>
-                    </div>
-                </div>
-                <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-                    <div class="card-body">
-                        <h5 class="card-title">Exito!</h5>
-                        <p class="card-text" th:text="${exito}"></p>
-                    </div>
-                </div>
+    <div class="form-group my-3">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Ciro">
+    </div>
+    <div class="form-group my-3">
+        <label for="color">Color</label>
+        <input id="color" type="text" class="form-control" name="color" placeholder="Blanco">
+    </div>
+    <div class="form-group my-3">
+        <label for="raza">Raza</label>
+        <input id="raza" type="text" class="form-control" name="raza" placeholder="Boxer">
+    </div>
+    <div class="form-group my-3">
+        <label>Alergico</label> <br>
+        <label for="alergico">SI</label>
+        <input id="alergico" type="radio" value="SI" class="form-control" name="alergico">
+        <label for="alergic">NO</label>
+        <input id="alergic" type="radio" value="NO" class="form-control" name="alergico" checked="true">
+    </div>
+    <div class="form-group my-3">
+        <label>Atención especial</label> <br>
+        <label for="paten">SI</label>
+        <input id="paten" type="radio" value="SI" class="form-control" name="atencionEspecial">
+        <label for="pate">NO</label>
+        <input id="pate" type="radio" value="NO" class="form-control" name="atencionEspecial" checked="true">
+    </div>
+    <div class="form-group my-3">
+        <label for="cantidadPuertas">Observaciones</label>
+        <input id="cantidadPuertas" type="text" class="form-control" name="observaciones"
+               placeholder="Le gusta jugar">
+    </div>
 
 
-            <button type="submit"
-                    class="btn btn-primary mt-3 botones"><strong>Ingresar</strong></button>
-        </form>
+    <div>
 
-        <div>
-            <a th:href="@{/index}"><button>Volver a la home</button></a>
-    
+        <label for="duenios">Dueño</label>
+
+        <select id="duenios" name="duen">
+            <option value="" disabled selected>Selecciona un dueño</option>
+
+            <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"></option>
+        </select>
+    </div>
+
+
+    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+        <div class="card-body">
+            <h5 class="card-title">Error ð</h5>
+            <p class="card-text" th:text="${error}"></p>
         </div>
-        <div>
-            <a th:href="@{/mascotas/listar}"><button>Listado de mascotas</button></a>
+    </div>
+    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+        <div class="card-body">
+            <h5 class="card-title">Exito!</h5>
+            <p class="card-text" th:text="${exito}"></p>
         </div>
-        
-         
+    </div>
 
-    </body>
+
+    <button type="submit"
+            class="btn btn-primary mt-3 botones"><strong>Ingresar</strong></button>
+</form>
+
+<div>
+    <a th:href="@{/index}">
+        <button>Volver a la home</button>
+    </a>
+
+</div>
+<div>
+    <a th:href="@{/mascotas/listar}">
+        <button>Listado de mascotas</button>
+    </a>
+</div>
+
+
+</body>
 </html>
