@@ -29,7 +29,23 @@ nav {
 
     text-align: center;
 
-    /* border: 1px solid red; */
+
+}
+
+.btn {
+ background-color: #fa7c9c;
+    border-color: #fa7c9c;
+    color: black;
+    font-weight: bold;
+    width: 15rem;
+
+}
+
+.btn:hover {
+    background-color: #f7a2b8;
+    border-color: #f7a2b8;
+
+
 }
 
 
@@ -47,21 +63,11 @@ nav {
 
 }
 
-.btn {
-    background-color: #fa7c9c;
-    border-color: #fa7c9c;
-    color: black;
-    font-weight: bold;
-    width: 15rem;
-
-}
-
-.btn:hover {
-    background-color: #f7a2b8;
-    border-color: #f7a2b8;
 
 
-}
+
+
+
 
 
 a:link {
