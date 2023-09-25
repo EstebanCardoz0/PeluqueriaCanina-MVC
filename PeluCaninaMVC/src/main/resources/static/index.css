@@ -12,9 +12,6 @@ nav {
     margin: .3rem;
 }
 
-
-
-
 .coraje {
     width: 30rem;
     height: 37.5rem;
@@ -29,7 +26,14 @@ nav {
 
     text-align: center;
 
+}
 
+.opciones {
+    margin-top: .1px;
+     border: 1px solid blue; 
+     align-items: center;
+     align-self: center;
+        
 }
 
 .btn {
@@ -38,6 +42,8 @@ nav {
     color: black;
     font-weight: bold;
     width: 15rem;
+    margin-right: auto;
+   margin-left: auto;
 
 }
 
@@ -48,8 +54,6 @@ nav {
 
 }
 
-
-
 .titulo {
     font-size: 300%;
     font-weight: bolder;
@@ -59,26 +63,12 @@ nav {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: .5rem;
-
-
 }
-
-
-
-
-
-
-
 
 a:link {
-
+text-decoration: none;
     display: flex;
     margin-top: .3rem;
-}
-
-.opciones {
-    margin-top: .1px;
-    /* border: 1px solid blue; */
 }
 
 .img-fluid {
