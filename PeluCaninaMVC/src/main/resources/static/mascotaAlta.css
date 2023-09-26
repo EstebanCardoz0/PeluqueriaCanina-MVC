@@ -1,0 +1,68 @@
+nav {
+
+    background-color: black;
+
+}
+
+.titulonav {
+    color: white;
+    /* text-align: left; */
+
+    /* margin-left: .5rem;
+    margin-right: .5rem; */
+
+
+    border: 1px;
+    font-size: 1.5rem;
+    margin: .3rem;
+}
+
+.img-fluid {
+
+    width: 2rem;
+
+}
+
+.datos {
+    /* padding: 0rem;
+    margin: 0; */
+    display: flex;
+    justify-content: center;
+    margin: 20rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+
+    width: 30rem;
+}
+
+.form-select {
+
+    width: 30rem;
+}
+
+.submit {
+    width: 30rem;
+    margin-top: 1.5rem;
+}
+
+h3 {
+    text-align: center;
+
+}
+
+.alerg {
+    justify-content: space-evenly;
+    font-size: medium;
+
+    margin: 10px;
+}
+
+.volver {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between ;
+}
