@@ -4,6 +4,10 @@ nav {
 
 }
 
+.ingreso {
+    margin-top: 1rem;
+}
+
 .titulonav {
     color: white;
     /* text-align: left; */
@@ -62,7 +66,7 @@ h3 {
 
 .volver {
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     display: flex;
 
 }
@@ -112,12 +116,23 @@ h3 {
 }
 
 #home {
-margin-right: 1rem;
+    margin-right: 1rem;
     width: 14rem;
+    font-weight: lighter;
+
 }
 
 #listado {
     margin-left: 1rem;
 
     width: 14rem;
+
+    font-weight: lighter;
 }
+
+.duenioo {
+
+    margin-bottom: 1rem;
+}
+
+.inp{margin-top: 1rem;}

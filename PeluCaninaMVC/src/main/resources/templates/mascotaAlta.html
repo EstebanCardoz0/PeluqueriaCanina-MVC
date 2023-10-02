@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
     <title>Crear Mascota</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <link rel="icon" th:href="@{/coraje_icon.png}" type="image/x-icon">
 
@@ -59,20 +63,20 @@
     <form class="datos  d-grid" action="/mascotas/crear" method="POST">
 
 
-        <div class="">
+        <div class="ingreso">
             <h3 class="">Ingresá los datos de la mascota</h3>
         </div>
 
         <div class="inp">
-            <label for="nombre">Nombre</label>
+            <label class="izq" for="nombre">Nombre</label>
             <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Ciro">
         </div>
         <div class="">
-            <label for="color">Color</label>
+            <label class="izq" for="color">Color</label>
             <input id="color" type="text" class="form-control" name="color" placeholder="Blanco">
         </div>
         <div class="">
-            <label for="raza">Raza</label>
+            <label class="izq" for="raza">Raza</label>
             <input id="raza" type="text" class="form-control" name="raza" placeholder="Boxer">
         </div>
         <div class="alerg d-flex">
@@ -90,13 +94,13 @@
             <input id="pate" type="radio" value="NO" class="" name="atencionEspecial" checked="true">
         </div>
         <div class="">
-            <label for="cantidadPuertas">Observaciones</label>
+            <label class="izq" for="cantidadPuertas">Observaciones</label>
             <input id="cantidadPuertas" type="text" class="form-control" name="observaciones"
                 placeholder="Le gusta jugar">
         </div>
 
 
-        <div>
+        <div class="duenioo">
 
             <label for="duenios">Dueño</label>
 
@@ -125,7 +129,7 @@
         <button type="submit" class="btn btn-primary btn-lg" id="ingresar">Ingresar</button>
 
 
-       
+
     </form>
 
     <div class="volver d-flex justify-content-center  ">
@@ -146,23 +150,19 @@
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
 
             <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                    <svg class="bi" width="30" height="24">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
+
                 <span class="copy ">© 2023 Esteban Cardozo</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                
+
 
                 <li class="ms-3">
-                    <a href="https://www.linkedin.com" target="_blank"><img src="../static/valdes.jpeg" alt="linkedin"
-                            class="text-body-secondary"></a>
+                    <a href="https://www.linkedin.com/in/esteban-cardozo19/" target="_blank"><img
+                            th:src="@{linkedin.svg}" alt="Linkedin" class="text-body-secondary"></a>
                 </li>
                 <li class="ms-3">
-                    <a href="https://www.github.com/" target="_blank"><img th:src="@{github.svg}" alt="Github"
+                    <a href="https://github.com/EstebanCardoz0" target="_blank"><img th:src="@{github.svg}" alt="Github"
                             class="text-body-secondary"></a>
                 </li>
                 <li class="ms-3">
