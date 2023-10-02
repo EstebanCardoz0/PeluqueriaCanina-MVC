@@ -64,5 +64,60 @@ h3 {
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between ;
+
+}
+
+.text-body-secondary {
+    height: 2rem;
+    margin-bottom: .5rem;
+
+}
+
+.container {
+
+    margin-top: 1rem;
+}
+
+.btn {
+    background-color: #fa7c9c;
+    border-color: #fa7c9c;
+    color: black;
+    font-weight: bold;
+    width: 15rem;
+
+
+}
+
+.btn:hover {
+    background-color: #f7a2b8;
+    border-color: #f7a2b8;
+
+
+}
+
+.d-grid {
+
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+
+    text-align: center;
+
+}
+
+#ingresar {
+
+    width: 30rem;
+}
+
+#home {
+margin-right: 1rem;
+    width: 14rem;
+}
+
+#listado {
+    margin-left: 1rem;
+
+    width: 14rem;
 }

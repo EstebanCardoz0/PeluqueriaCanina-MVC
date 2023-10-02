@@ -122,61 +122,61 @@
         </div>
 
 
-        <button type="submit" class="submit"><strong>Ingresar</strong></button>
-    
+        <button type="submit" class="btn btn-primary btn-lg" id="ingresar">Ingresar</button>
 
-    <div class="volver d-flex justify-content-between   ">
+
+       
+    </form>
+
+    <div class="volver d-flex justify-content-center  ">
         <div>
             <a th:href="@{/index}">
-                <button>Volver a la home</button>
+                <button class="btn btn-primary btn-lg" id="home">Volver a la home</button>
             </a>
 
         </div>
         <div>
             <a th:href="@{/mascotas/listar}">
-                <button>Listado de mascotas</button>
+                <button class="btn btn-primary btn-lg" id="listado">Listado de mascotas</button>
             </a>
         </div>
     </div>
-</form>
 
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-1  border-top">
-
-        <div class="col-md-4 d-flex align-items-center">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <svg class="bi" width="30" height="24">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
-            <span class="copy ">© 2023 Esteban Cardozo</span>
-        </div>
-
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-body-secondary" th:href="@{linkedin.svg}">
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#twitter"></use>
-
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <svg class="bi" width="30" height="24">
+                        <use xlink:href="#bootstrap"></use>
                     </svg>
-                </a></li>
+                </a>
+                <span class="copy ">© 2023 Esteban Cardozo</span>
+            </div>
 
-            <li class="ms-3">
-                <a href="https://www.linkedin.com/" target="_blank"><img th:src="@{linkedin.svg}" alt="linkedin"
-                        class="text-body-secondary"></a>
-            </li>
-            <li class="ms-3">
-                <a href="https://www.github.com/" target="_blank"><img th:src="@{github.svg}" alt="Github"
-                        class="text-body-secondary"></a>
-            </li>
-            <li class="ms-3">
-                <a href="mailto:esteban.cardozo.wec@gmail.com" target="_blank"><img th:src="@{envelope-at-fill.svg}"
-                        alt="Mail" class="text-body-secondary"></a>
-            </li>
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                
+
+                <li class="ms-3">
+                    <a href="https://www.linkedin.com" target="_blank"><img src="../static/valdes.jpeg" alt="linkedin"
+                            class="text-body-secondary"></a>
+                </li>
+                <li class="ms-3">
+                    <a href="https://www.github.com/" target="_blank"><img th:src="@{github.svg}" alt="Github"
+                            class="text-body-secondary"></a>
+                </li>
+                <li class="ms-3">
+                    <a href="mailto:esteban.cardozo.wec@gmail.com" target="_blank"><img th:src="@{envelope-at-fill.svg}"
+                            alt="Mail" class="text-body-secondary"></a>
+                </li>
 
 
-        </ul>
+            </ul>
 
-    </footer>
+        </footer>
+    </div>
+
+
 </body>
 
 </html>
