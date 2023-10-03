@@ -57,6 +57,10 @@ h3 {
 
 }
 
+.form-control::placeholder {
+    color: rgb(180, 192, 204);
+}
+
 .alerg {
     justify-content: space-evenly;
     font-size: medium;
@@ -64,13 +68,9 @@ h3 {
     margin: 10px;
 }
 
-.form-control::placeholder {
-    color: rgb(180, 192, 204);
-}
-
 .volver {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 8rem;
     display: flex;
 
 }
@@ -84,8 +84,6 @@ h3 {
 .container {
 
     margin-top: 1rem;
-
-
 }
 
 .btn {
@@ -136,7 +134,7 @@ h3 {
     font-weight: lighter;
 }
 
-.duenioo {
+.dire {
 
     margin-bottom: 1rem;
 }
