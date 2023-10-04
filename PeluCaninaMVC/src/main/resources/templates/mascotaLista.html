@@ -3,18 +3,67 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mascota lista</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mascotas - Estilo Perruno</title>
+    <link rel="icon" th:href="@{/coraje_icon.png}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/mascotaLista.css}">
 
 </head>
-<<<<<<< HEAD
 
 <body>
-    <table class="table">
-        <thead>
-            <tr>
 
-                <th>Id</th>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <img class="img-fluid" th:src="@{/coraje_icon.png}" alt="icono coraje">
+            <p class="titulonav" href="#">Estilo Perruno</p>
+
+
+
+
+
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+
+
+                </ul>
+
+                <form class="d-flex bus" action="/mascotas/traer" method="get">
+                    <input name="id" class="form-control me-2" type="number" placeholder="Buscar por ID">
+
+                    <button class="btn btn-outline-success " type="submit">Buscar</button>
+                </form>
+
+                <div>
+                    <a th:href="@{/mascotas/alta}"><button class="btn btn-outline-success">crear mascota</button></a>
+                </div>
+                <div class="botonav">
+                    <a th:href="@{/index}"><button class="btn btn-outline-success">Volver a la home</button></a>
+
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div>
+        <a th:href="@{/mascotas/alta}"><button class="btn">crear mascota</button></a>
+    </div>
+
+
+
+    <table class="table  table-hover table-bordered container-fluid  ">
+        <thead>
+            <tr class="cen">
+
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Raza</th>
                 <th>Color</th>
@@ -23,99 +72,24 @@
                 <th>Observaciones</th>
                 <th>ID Dueño</th>
                 <th>Dueño</th>
-                <th colspan="2">Acciones</th>
-=======
->>>>>>> 5bba98b6a2ecff790dcf6a4d5dfb98ee902e9fa0
-
-<body>
-
-<<<<<<< HEAD
-            </tr>
-        </thead>
-        <tbody th:each="masco:${mascotas}">
-            <tr>
-                <th th:text="${masco.id}"></th>
-                <td th:text="${masco.nombre}"></td>
-                <td th:text="${masco.raza}"></td>
-                <td th:text="${masco.color}"></td>
-                <td th:text="${masco.alergico}"></td>
-                <td th:text="${masco.atencionEspecial}"></td>
-                <td th:text="${masco.observaciones}"></td>
-
-                <td>
-
-                    <span th:if="${masco.duen != null}" th:text="${masco.duen.id}"></span>
-                    <span th:if="${masco.duen == null}">(No tiene)</span>
-
-                </td>
-                <td>
-
-                    <span th:if="${masco.duen != null}" th:text="${masco.duen.nombre}"></span>
-                    <span th:if="${masco.duen == null}">(No tiene)</span>
-
-                </td>
-
-
-
-                <td>
-                    <a th:href="@{/mascotas/editar/__${masco.id}__}"><i></i>Modificar</a>
-                </td>
-                <td>
-                    <a th:href="@{/mascotas/borrar/__${masco.id}__}"><i></i>Borrar</a>
-                </td>
-
-
-
-            </tr>
-        </tbody>
-    </table>
-=======
-    <div>
-        <form action="/mascotas/traer" method="get">
-            <label for="id">Buscar por número ID</label>
-            <input id="id" name="id" type="number" value="1">
-            <button type="submit">Buscar</button>
-        </form>
-
-
-    </div>
-    <div>
-        <a th:href="@{/mascotas/alta}"><button>crear mascota</button></a>
-    </div>
-
-
-
-    <table class="table">
-        <thead>
-            <tr>
-
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Raza</th>
-                <th>Color</th>
-                <th>Alergico</th>
-                <th>Atención Especial</th>
-                <th>Observaciones</th>
-                <th>ID Dueño</th>
-                <th>Dueño</th>
-                <th colspan="2">Acciones</th>
+                <th colspan="2" class="">Acciones</th>
 
 
             </tr>
         </thead>
-        <tbody th:each="masco:${mascotas}">
+        <tbody th:each="masco:${mascotas}" class="">
             <tr>
-                <th th:text="${masco.id}"></th>
+                <th class="cen" th:text="${masco.id}"></th>
                 <td th:text="${masco.nombre}"></td>
                 <td th:text="${masco.raza}"></td>
                 <td th:text="${masco.color}"></td>
-                <td th:text="${masco.alergico}"></td>
-                <td th:text="${masco.atencionEspecial}"></td>
+                <td class="cen" th:text="${masco.alergico}"></td>
+                <td class="cen" th:text="${masco.atencionEspecial}"></td>
                 <td th:text="${masco.observaciones}"> </td>
 
 
 
-                <td>
+                <td class="cen">
 
                     <span th:if="${masco.duen != null}" th:text="${masco.duen.id}"></span>
                     <span th:if="${masco.duen == null}">(No tiene)</span>
@@ -130,10 +104,10 @@
 
 
 
-                <td>
+                <td class="cen">
                     <a th:href="@{/mascotas/editar/__${masco.id}__}"><i></i>Modificar</a>
                 </td>
-                <td>
+                <td class="cen">
                     <a th:href="@{/mascotas/borrar/__${masco.id}__}"><i></i>Borrar</a>
                 </td>
 
@@ -143,18 +117,40 @@
         </tbody>
     </table>
 
-    
+    <div class="container">
 
-    <div>
-        <a th:href="@{/index}"><button>Volver a la home</button></a>
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
+
+            <div class="col-md-4 d-flex align-items-center">
+
+                <span class="copy ">© 2023 Esteban Cardozo</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+
+
+                <li class="ms-3">
+                    <a href="https://www.linkedin.com/in/esteban-cardozo19/" target="_blank"><img
+                            th:src="@{linkedin.svg}" alt="Linkedin" class="text-body-secondary"></a>
+                </li>
+                <li class="ms-3">
+                    <a href="https://github.com/EstebanCardoz0" target="_blank"><img th:src="@{github.svg}" alt="Github"
+                            class="text-body-secondary"></a>
+                </li>
+                <li class="ms-3">
+                    <a href="mailto:esteban.cardozo.wec@gmail.com" target="_blank"><img th:src="@{envelope-at-fill.svg}"
+                            alt="Mail" class="text-body-secondary"></a>
+                </li>
+
+
+            </ul>
+
+        </footer>
 
     </div>
-<<<<<<< HEAD
->>>>>>> 5bba98b6a2ecff790dcf6a4d5dfb98ee902e9fa0
-=======
 
 
->>>>>>> aff40941ef1a5f5fb77a00aadc6a55f318778967
+
 </body>
 
 </html>

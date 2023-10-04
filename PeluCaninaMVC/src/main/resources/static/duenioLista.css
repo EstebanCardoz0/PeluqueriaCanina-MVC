@@ -1,0 +1,63 @@
+nav {
+
+    background-color: black;
+
+}
+
+.titulonav {
+    color: white;
+    /* text-align: left; */
+
+    /* margin-left: .5rem;
+    margin-right: .5rem; */
+
+
+    border: 1px;
+    font-size: 1.5rem;
+    margin: .3rem;
+}
+
+.coraje {
+    width: 30rem;
+    height: 37.5rem;
+}
+
+.img-fluid {
+
+    width: 2rem;
+
+}
+
+.buscar {
+
+    margin-top: 5rem;
+}
+
+.cen {
+
+    text-align: center;
+}
+
+.botonav {
+
+    margin-left: 4rem;
+    margin-right: 1rem;
+}
+
+.btn {
+    background-color: #fa7c9c;
+    border-color: #fa7c9c;
+    color: black;
+    font-weight: bold;
+    width: 15rem;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.btn:hover {
+    background-color: #f7a2b8;
+    border-color: #f7a2b8;
+
+
+}
