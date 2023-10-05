@@ -34,15 +34,18 @@
 
                 </ul>
                
-                <form class="d-flex bus" action="/mascotas/traer" method="get">
+                <form class="d-flex bus" action="/duenios/traer" method="get">
                     <input name="id" class="form-control me-2" type="number" placeholder="Buscar por ID">
 
-                    <button class="btn btn-outline-success " type="submit">Buscar</button>
+                    <button class="btn btn-outline-success me-4" type="submit" id="busID">Buscar</button>
                 </form>
 
+                <div>
+                    <a th:href="@{/duenios/alta}"><button class="btn btn-outline-success">Crear dueño</button></a>
+                </div>
                 <div class="botonav">
-                    <a th:href="@{/index}"><button class="btn btn-outline-success">Volver a la home</button></a>
-    
+                    <a th:href="@{/index}"><button class="btn btn-outline-success">Volver a la Home</button></a>
+
                 </div>
 
 
@@ -52,20 +55,17 @@
 
    
 
-    <div>
-        <a th:href="@{/duenios/alta}"> <button>Crear Dueño</button></a>
-
-    </div>
+   
 
 
-    <table class="table">
+    <table class="table table-hover table-bordered container-fluid ">
         <thead>
-            <tr>
+            <tr class="cen">
 
-                <th>Id</th>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Celular</th>
-                <th>Direccion</th>
+                <th>Dirección</th>
                 <th>Mascotas</th>
                 <th colspan="2">Acciones</th>
 
@@ -75,7 +75,7 @@
 
         <tbody th:each="dueni:${duenios}">
             <tr>
-                <th th:text="${dueni.id}"></th>
+                <th class="cen" th:text="${dueni.id}"></th>
                 <td th:text="${dueni.nombre}"></td>
                 <td th:text="${dueni.celular}"></td>
                 <td th:text="${dueni.direccion}"></td>
@@ -96,10 +96,10 @@
 
 
 
-                <td>
+                <td class="cen">
                     <a th:href="@{/duenios/editar/__${dueni.id}__}"><i></i>Modificar</a>
                 </td>
-                <td>
+                <td class="cen">
                     <a th:href="@{/duenios/borrar/__${dueni.id}__}"><i></i>Borrar</a>
                 </td>
 
@@ -140,6 +140,8 @@
         </footer>
 
     </div>
+
+    
 </body>
 
 </html>

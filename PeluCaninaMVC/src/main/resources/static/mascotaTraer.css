@@ -1,0 +1,57 @@
+nav {
+
+    background-color: black;
+
+}
+
+.titulonav {
+    color: white;
+    /* text-align: left; */
+
+    /* margin-left: .5rem;
+    margin-right: .5rem; */
+
+
+    border: 1px;
+    font-size: 1.5rem;
+    margin: .3rem;
+}
+
+.coraje {
+    width: 30rem;
+    height: 37.5rem;
+}
+
+.img-fluid {
+
+    width: 2rem;
+
+}
+
+.buscar {
+
+    margin-top: 5rem;
+}
+
+.conti {
+    border: 1px solid red;
+    margin-top: 4rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.borde {
+    border: 1px solid green;
+    text-align: center;
+    padding: 0;
+
+}
+
+.table {
+    margin-top: 7rem ;
+    width: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+

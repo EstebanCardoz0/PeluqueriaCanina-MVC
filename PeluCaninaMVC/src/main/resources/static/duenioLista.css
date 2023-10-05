@@ -28,6 +28,16 @@ nav {
 
 }
 
+.cen {
+
+    text-align: center;
+}
+
+.table {
+    max-width: 83rem;
+    margin-top: 5rem;
+}
+
 .buscar {
 
     margin-top: 5rem;
@@ -40,7 +50,7 @@ nav {
 
 .botonav {
 
-    margin-left: 4rem;
+    margin-left: 1rem;
     margin-right: 1rem;
 }
 
@@ -49,7 +59,7 @@ nav {
     border-color: #fa7c9c;
     color: black;
     font-weight: bold;
-    width: 15rem;
+    width: 9.7rem;
     margin-right: auto;
     margin-left: auto;
 
@@ -60,4 +70,15 @@ nav {
     border-color: #f7a2b8;
 
 
+}
+
+a {
+
+    color: #fa7c9c;
+}
+
+.bus {
+
+    width: 20rem;
+    margin-right: 4rem;
 }

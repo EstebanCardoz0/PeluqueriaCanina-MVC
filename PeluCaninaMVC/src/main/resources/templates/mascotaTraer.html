@@ -3,41 +3,146 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mascota traer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Mostrar Mascota - Estilo Perruno</title>
+    <link rel="icon" th:href="@{/coraje_icon.png}" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/mascotaTraer.css}">
 </head>
 
 <body>
-    <div class="titulo">
 
-        <h1>Mascota N°<SPAn th:text="${masco.idDTOMascota}"></SPAn></h1>
+    <nav class="navbar navbar-expand-lg fixed-top  ">
+        <div class="container-fluid">
+            <img class="img-fluid" th:src="@{/coraje_icon.png}" alt="icono coraje">
+            <p class="titulonav" href="#">Estilo Perruno</p>
+
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                </ul>
+
+                <!-- <form class="d-flex bus" action="/mascotas/traer" method="get">
+                    <input name="id" class="form-control me-2" type="number" placeholder="Buscar por ID">
+
+                    <button class="btn btn-outline-success me-4" type="submit" id="busID">Buscar</button>
+                </form> -->
+
+                <div>
+                    <a th:href="@{/mascotas/alta}"><button class="btn btn-outline-success">Crear mascota</button></a>
+                </div>
+                <div class="botonav">
+                    <a th:href="@{/index}"><button class="btn btn-outline-success">Volver a la Home</button></a>
+
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+
+   
+
+        <table class="table table-hover  table-bordered">
+            <tr>
+                <td>cell1_1</td>
+                <td>cell2_1</td>
+            </tr>
+            <tr>
+                <td>cell1_2</td>
+                <td>cell2_2</td>
+            </tr>
+            <tr>
+                <td>cell1_3</td>
+                <td>cell2_3</td>
+            </tr>
+            <tr>
+                <td>cell1_4</td>
+                <td>cell2_4</td>
+            </tr>
+            <tr>
+                <td>cell1_5</td>
+                <td>cell2_5</td>
+            </tr>
+            <tr>
+                <td>cell1_6</td>
+                <td>cell2_6</td>
+            </tr>
+            <tr>
+                <td>cell1_7</td>
+                <td>cell2_7</td>
+            </tr>
+            <tr>
+                <td>cell1_8</td>
+                <td>cell2_8</td>
+            </tr>
+        </table>
+        
+        <div class="container conti  ">
+        <div class="borde  ">
+
+            <h1>Mascota N°<SPAn th:text="${masco.idDTOMascota}"></SPAn></h1>
+            <div class="cuerpo">
+                <p>Nombre: <span th:text="${masco.nombre}"></span></p>
+                <p>Color: <span th:text="${masco.color}"></span></p>
+                <p>Raza: <span th:text="${masco.raza}"></span></p>
+                <p>Atención Especial: <span th:text="${masco.atencionEspecial}"></span></p>
+                <p>Alérgico: <span th:text="${masco.alergico}"></span></p>
+                <p>Observaciones: <span th:text="${masco.observaciones}"></span></p>
+                <p>Dueño: <span th:text="${masco.nombreDuenio}"></span></p>
+                <p>ID Dueño: <span th:text="${masco.idDuenio}"></span></p>
+
+
+
+
+            </div>
+
+            <div>
+                <a th:href="@{/mascotas/listar}"><button>Volver al listado</button></a>
+                <a th:href="@{/index}"><button>Volver a la home</button></a>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="cuerpo">
-        <p>Nombre: <span th:text="${masco.nombre}"></span></p>
-        <p>Color: <span th:text="${masco.color}"></span></p>
-        <p>Raza: <span th:text="${masco.raza}"></span></p>
-        <p>Atención Especial: <span th:text="${masco.atencionEspecial}"></span></p>
-        <p>Alérgico: <span th:text="${masco.alergico}"></span></p>
-        <p>Observaciones: <span th:text="${masco.observaciones}"></span></p>
-        <p>Dueño: <span th:text="${masco.nombreDuenio}"></span></p>
-        <p>ID Dueño: <span th:text="${masco.idDuenio}"></span></p>
+    <div class="container">
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
+
+            <div class="col-md-4 d-flex align-items-center">
+
+                <span class="copy ">© 2023 Esteban Cardozo</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
 
 
+                <li class="ms-3">
+                    <a href="https://www.linkedin.com/in/esteban-cardozo19/" target="_blank"><img
+                            th:src="@{linkedin.svg}" alt="Linkedin" class="text-body-secondary"></a>
+                </li>
+                <li class="ms-3">
+                    <a href="https://github.com/EstebanCardoz0" target="_blank"><img th:src="@{github.svg}" alt="Github"
+                            class="text-body-secondary"></a>
+                </li>
+                <li class="ms-3">
+                    <a href="mailto:esteban.cardozo.wec@gmail.com" target="_blank"><img th:src="@{envelope-at-fill.svg}"
+                            alt="Mail" class="text-body-secondary"></a>
+                </li>
 
+
+            </ul>
+
+        </footer>
 
     </div>
-
-    <div>
-        <a th:href="@{/mascotas/listar}"><button>Volver al listado</button></a>
-        <a th:href="@{/index}"><button>Volver a la home</button></a>
-
-    </div>
-
-
-
 </body>
 
 </html>
