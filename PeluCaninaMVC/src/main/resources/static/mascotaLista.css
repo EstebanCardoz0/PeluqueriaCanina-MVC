@@ -83,3 +83,15 @@ a {
     margin-right: 4rem;
 }
 
+footer {
+    bottom: 0;
+    position: absolute;
+    width: 85%;
+
+}
+
+body {
+    position: relative;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+}
