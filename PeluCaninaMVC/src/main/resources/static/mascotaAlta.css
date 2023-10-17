@@ -144,3 +144,10 @@ h3 {
 .inp {
     margin-top: 1rem;
 }
+
+footer {
+    bottom: 0;
+    position: absolute;
+    width: 85%;
+
+}
