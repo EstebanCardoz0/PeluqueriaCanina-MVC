@@ -70,7 +70,6 @@ public class DuenioController {
 
             return "duenioTraer.html";
         } catch (Exception e) {
-            System.out.println("el id dto es: " +id);
             return "errorDuenioTraer.html";
         }
 
