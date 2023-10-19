@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -45,17 +45,27 @@
         </div>
     </nav>
 
-    <div class="datos d-flex justify-content-between ">
+    <div class="container  conti  ">
+        <div class="borde  ">
 
-        <div><img class="coraje" src="static/asustadoCoraje.png" alt="Coraje">
+            <h1 class="enca">Dueño no encontrado o inexistente</h1>
+            <div class="cuerpo">
+
+<p class="atributos">Por favor, vuelva a intentar</p>
+
+
+
+            </div>
+
+
+
         </div>
 
-        <h1>Dueño no encontrado o inexistente</h1>
-
-        <a th:href="@{/duenios/listar}"><button>Volver al listado</button></a>
-        <a th:href="@{/index}"><button>Volver a la home</button></a>
-
     </div>
+
+
+
+  
 
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
