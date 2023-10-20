@@ -6,12 +6,6 @@ nav {
 
 .titulonav {
     color: white;
-    /* text-align: left; */
-
-    /* margin-left: .5rem;
-    margin-right: .5rem; */
-
-
     border: 1px;
     font-size: 1.5rem;
     margin: .3rem;
@@ -85,13 +79,12 @@ a {
 
 footer {
     bottom: 0;
-    /* position: absolute;
-    width: 50rem; */
+   
 
 }
 
 body {
     position: relative;
-    /* padding-bottom: 3rem; */
+ 
     min-height: 100vh;
 }
